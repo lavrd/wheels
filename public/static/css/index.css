@@ -1,0 +1,17 @@
+/*
+
+gunmetal          #272838
+buff              #F3DE8A
+dark salmon       #EB9486
+light slate gray  #7E7F9A
+ghost white       #F9F8F8
+
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+body {
+  -webkit-user-select: none;
+  font-family: 'Roboto Mono', monospace;
+  background-color: #F9F8F8;
+  color: #272838;
+}
