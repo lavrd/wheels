@@ -14,7 +14,40 @@
   <h1>You need to enable javascript, bro!</h1>
 </noscript>
 
-<h1>Wheels.</h1>
+<header>
+  <h1>Wheels.</h1>
+</header>
+
+<section>
+
+  <div class="d-flex">
+    <div id='scene'></div>
+  </div>
+
+  <div class='d-flex wheels-block'>
+    <button onclick="changeWheel('enkei')">enkei</button>
+    <button onclick="changeWheel('oz')">oz</button>
+    <button onclick="changeWheel('vossen')">vossen</button>
+  </div>
+
+  <div class="d-flex colors-block">
+    <button onclick="changeColor('primaryColor')"></button>
+    <button onclick="changeColor('secondColor')"></button>
+    <button onclick="changeColor('exColor1')"></button>
+    <button onclick="changeColor('exColor2')"></button>
+    <button onclick="changeColor('exColor3')"></button>
+  </div>
+</section>
+
+<footer>
+  <h2>Wheels.</h2>
+  <h3>spacelavr / barmadzilla</h3>
+  <h5>MIT</h5>
+</footer>
+
+<script src="./static/js/three.min.js"></script>
+<script src="./static/js/OrbitControls.js"></script>
+<script src="./static/js/index.js"></script>
 
 </body>
 </html>

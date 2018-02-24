@@ -1,17 +1,81 @@
-/*
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import "./normalize.css";
 
-gunmetal          #272838
-buff              #F3DE8A
-dark salmon       #EB9486
-light slate gray  #7E7F9A
-ghost white       #F9F8F8
-
-*/
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+:root {
+  --primary-color: #1E1E24;
+  --second-color: #FFF8F0;
+  --ex-color-1: #111D4A;
+  --ex-color-2: #FFCF99;
+  --ex-color-3: #92140C;
+  --padding: 75px;
+  --margin: 25px;
+}
 
 body {
   -webkit-user-select: none;
-  font-family: 'Roboto Mono', monospace;
-  background-color: #F9F8F8;
-  color: #272838;
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--second-color);
+  color: var(--primary-color);
+}
+
+.d-flex {
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.colors-block {
+  background-color: var(--ex-color-3);
+}
+
+.wheels-block {
+  background-color: var(--ex-color-3);
+}
+
+.wheels-block > button:hover {
+  background-color: var(--ex-color-1);
+}
+
+.wheels-block > button {
+  color: var(--second-color);
+  background-color: var(--primary-color);
+  font-weight: bold;
+}
+
+.colors-block > button:nth-child(1) {
+  background-color: var(--primary-color);
+}
+
+.colors-block > button:nth-child(2) {
+  background-color: var(--second-color);
+}
+
+.colors-block > button:nth-child(3) {
+  background-color: var(--ex-color-1);
+}
+
+.colors-block > button:nth-child(4) {
+  background-color: var(--ex-color-2);
+}
+
+.colors-block > button:nth-child(5) {
+  border: 1px solid var(--primary-color);
+  background-color: var(--ex-color-3);
+}
+
+button {
+  margin: var(--margin);
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 50px 15px 50px;
+}
+
+header {
+  padding: var(--padding);
+}
+
+footer {
+  text-align: center;
+  padding: var(--padding);
 }
