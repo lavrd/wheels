@@ -1,2 +1,2 @@
-# wheels
-Change wheels of car like a boss
+# wheels.
+Change wheels of car like a boss.
