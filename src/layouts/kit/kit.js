@@ -191,7 +191,7 @@ class Kit extends React.Component {
       <section>
         <div id='scene' className='d-flex justify-space-center'/>
 
-        <div className='d-flex justify-space-center'>
+        <div className='d-flex justify-space-center kit-settings-block'>
           <div className='d-flex wheels-block'>
             {
               Object.keys(wheelsFPath).map((id, index) =>
@@ -200,7 +200,6 @@ class Kit extends React.Component {
                   key={index}
                   disabled={id === this.state.currentWheel}
                 >
-                  {console.log(id === this.state.currentWheel)}
                   enkei
                 </button>
               )

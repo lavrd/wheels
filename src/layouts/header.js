@@ -1,14 +1,30 @@
-import React from "react";
-import {Link} from 'react-router-dom';
+import React, {Component} from "react";
+import {Link, withRouter} from 'react-router-dom';
 
-const Header = () => (
-  <header className='d-flex justify-space-between'>
-    <menu className='d-flex justify-space-between'>
-      <div><Link to='/'>wheels.</Link></div>
-      <div><Link to='/kit/list'>wheel list</Link></div>
-    </menu>
-    <h3>Change wheels of car like a boss.</h3>
-  </header>
-);
+class Header extends Component {
 
-export default Header;
+  handleLogout = () => {
+    localStorage.clear();
+    this.props.history.push('/signin');
+  };
+
+  render() {
+    return (
+      <header className='d-flex justify-space-between'>
+        <div className='d-flex justify-space-between'>
+          <div><Link to='/'>wheels.</Link></div>
+          <div><Link to='/kit/list'>wheel list</Link></div>
+        </div>
+
+        <button
+          className='btn-primary'
+          onClick={this.handleLogout}
+        >
+          exit
+        </button>
+      </header>
+    );
+  }
+}
+
+export default withRouter(Header);

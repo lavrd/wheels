@@ -19,7 +19,7 @@ body {
   color: var(--primary-color);
 }
 
-menu > div:nth-child(n+2) {
+header > div > div:nth-child(n+2) {
   padding-left: var(--padding);
 }
 
@@ -92,17 +92,24 @@ button:disabled, button:disabled:hover {
   opacity: 0.1;
 }
 
-button {
+.kit-settings-block button {
   margin: var(--margin);
+}
+
+button {
   cursor: pointer;
   border: none;
   border-radius: 3px;
   padding: 5px 25px 5px 25px;
 }
 
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--second-color);
+}
+
 header {
-  margin: var(--margin);
-  margin-bottom: 0;
+  margin: var(--margin) var(--margin) 0 var(--margin);
 }
 
 a {

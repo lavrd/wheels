@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, Redirect} from "react-router-dom";
+import {Link, Redirect, withRouter} from "react-router-dom";
 import {Preloader} from '../components';
 
 class SignIn extends Component {
@@ -8,7 +8,10 @@ class SignIn extends Component {
     super(props);
     this.state = {
       isAuthenticated: false,
-      pending: true
+      pending: true,
+      login: '',
+      password: '',
+      error: null
     };
   }
 
@@ -16,15 +19,53 @@ class SignIn extends Component {
     this.setState({isAuthenticated: !!localStorage.getItem('token'), pending: false});
   }
 
+  handleLogin = () => {
+    if (this.state.login === 'admin' && this.state.password === 'admin') {
+      localStorage.setItem('token', 'token');
+      this.props.history.push('/kit');
+    } else {
+      this.setState({error: 'incorrect login or password'});
+    }
+  };
+
+  handleChange = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    this.setState({[name]: value});
+  };
+
   render() {
     if (this.state.pending) return <Preloader/>;
     if (this.state.isAuthenticated) return <Redirect to='/'/>;
+
     return (
       <section className='hero'>
+        <input
+          placeholder='login'
+          value={this.state.login}
+          type='text'
+          name='login'
+          onChange={this.handleChange}
+        />
+        <input
+          placeholder='password'
+          value={this.state.password}
+          type='password'
+          name='password'
+          onChange={this.handleChange}
+        />
+        <label>{this.state.error}</label>
+        <button
+          disabled={!this.state.login || !this.state.password}
+          onClick={this.handleLogin}
+        >
+          login
+        </button>
         <Link to='/'><h1>landing</h1></Link>
       </section>
     );
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);
