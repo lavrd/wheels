@@ -19,7 +19,8 @@ class SignIn extends Component {
     this.setState({isAuthenticated: !!localStorage.getItem('token'), pending: false});
   }
 
-  handleLogin = () => {
+  handleLogin = (e) => {
+    e.preventDefault();
     if (this.state.login === 'admin' && this.state.password === 'admin') {
       localStorage.setItem('token', 'token');
       this.props.history.push('/kit');
@@ -41,28 +42,30 @@ class SignIn extends Component {
 
     return (
       <section className='hero'>
-        <input
-          placeholder='login'
-          value={this.state.login}
-          type='text'
-          name='login'
-          onChange={this.handleChange}
-        />
-        <input
-          placeholder='password'
-          value={this.state.password}
-          type='password'
-          name='password'
-          onChange={this.handleChange}
-        />
-        <label>{this.state.error}</label>
-        <button
-          disabled={!this.state.login || !this.state.password}
-          onClick={this.handleLogin}
-        >
-          login
-        </button>
-        <Link to='/'><h1>landing</h1></Link>
+        <form onSubmit={this.handleLogin}>
+          <input
+            placeholder='login'
+            value={this.state.login}
+            type='text'
+            name='login'
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder='password'
+            value={this.state.password}
+            type='password'
+            name='password'
+            onChange={this.handleChange}
+          />
+          <label>{this.state.error}</label>
+          <button
+            disabled={!this.state.login || !this.state.password}
+            type='submit'
+          >
+            login
+          </button>
+          <Link to='/'><h1>landing</h1></Link>
+        </form>
       </section>
     );
   }

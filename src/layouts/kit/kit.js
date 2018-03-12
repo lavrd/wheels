@@ -200,7 +200,7 @@ class Kit extends React.Component {
                   key={index}
                   disabled={id === this.state.currentWheel}
                 >
-                  enkei
+                  {id}
                 </button>
               )
             }
