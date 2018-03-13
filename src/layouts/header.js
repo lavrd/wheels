@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import {Link, withRouter} from 'react-router-dom';
+import Storage from '../utils/storage';
 
 class Header extends Component {
 
   handleLogout = () => {
-    localStorage.clear();
+    Storage.clear();
     this.props.history.push('/signin');
   };
 

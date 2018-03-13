@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Footer, Header, Kit, KitList, KitNew} from "./layouts";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {Preloader} from './components';
+import Storage from './utils/storage';
 
 class Main extends Component {
 
@@ -14,7 +15,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.setState({isAuthenticated: !!localStorage.getItem('token'), pending: false});
+    this.setState({isAuthenticated: !!Storage.get('token'), pending: false});
   }
 
   render() {

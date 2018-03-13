@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link, Redirect, withRouter} from "react-router-dom";
 import {Preloader} from '../components';
+import Storage from '../utils/storage';
 
 class SignIn extends Component {
 
@@ -16,13 +17,14 @@ class SignIn extends Component {
   }
 
   componentDidMount() {
-    this.setState({isAuthenticated: !!localStorage.getItem('token'), pending: false});
+    this.setState({isAuthenticated: !!Storage.get('token'), pending: false});
   }
 
-  handleLogin = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.login === 'admin' && this.state.password === 'admin') {
-      localStorage.setItem('token', 'token');
+      Storage.clear();
+      Storage.set('token', 'default');
       this.props.history.push('/kit');
     } else {
       this.setState({error: 'incorrect login or password'});
@@ -42,7 +44,7 @@ class SignIn extends Component {
 
     return (
       <section className='hero'>
-        <form onSubmit={this.handleLogin}>
+        <form onSubmit={this.handleSubmit}>
           <input
             placeholder='login'
             value={this.state.login}
