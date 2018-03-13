@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Storage from '../../utils/storage';
+import Storage, {STORAGE_WHEELS} from '../../utils/storage';
 
 class KitNew extends Component {
 
@@ -9,38 +9,36 @@ class KitNew extends Component {
       name: '',
       description: '',
       wheel: null,
-      preview: null
+      preview: null,
+      price: ''
     };
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.disabled()) return;
-    Storage.append('wheels', this.state);
+    const data = this.state;
+    data.name = data.name.trim();
+    data.description = data.description.trim();
+    Storage.append(STORAGE_WHEELS, data);
+    this.clearFields();
   };
 
-  upload = (file, name) => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      this.setState({[name]: reader.result});
-    };
-    reader.readAsDataURL(file);
+  clearFields = () => {
+    this.setState({name: '', description: '', price: '', wheel: null, preview: null});
   };
 
   handleChange = (e) => {
     const target = e.target;
     const name = target.name;
-    if (!!target.files) {
-      const file = target.files[0];
-      this.upload(file, name);
-      return;
-    }
-    const value = target.value;
+    let value;
+    if (!!target.files) value = target.files[0].name;
+    else value = target.value;
     this.setState({[name]: value});
   };
 
   disabled = () => {
-    return !this.state.name;
+    return !this.state.name || !this.state.price;
   };
 
   render() {
@@ -53,13 +51,20 @@ class KitNew extends Component {
           <input
             name='name'
             value={this.state.name}
-            placeholder='wheel name'
+            placeholder='name'
             onChange={this.handleChange}
           />
           <input
             name='description'
             value={this.state.description}
-            placeholder='wheel description'
+            placeholder='description'
+            onChange={this.handleChange}
+          />
+          <input
+            name='price'
+            type='number'
+            value={this.state.price}
+            placeholder='price'
             onChange={this.handleChange}
           />
           <input

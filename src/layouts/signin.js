@@ -61,6 +61,7 @@ class SignIn extends Component {
           />
           <label>{this.state.error}</label>
           <button
+            className='btn-primary'
             disabled={!this.state.login || !this.state.password}
             type='submit'
           >
