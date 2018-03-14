@@ -105,7 +105,12 @@ header > div > div:nth-child(n+2) {
 }
 
 .text-danger {
-  color: var(--ex-color-1);
+  color: var(--ex-color-1)
+}
+
+.is-danger {
+  background-color: var(--ex-color-1);
+  color: var(--second-color)
 }
 
 label {
@@ -131,6 +136,14 @@ button {
   border: none;
   border-radius: 3px;
   padding: 5px 25px 5px 25px;
+}
+
+.pl-5 {
+  padding-left: 10rem;
+}
+
+.pr-5 {
+  padding-right: 10rem;
 }
 
 textarea {

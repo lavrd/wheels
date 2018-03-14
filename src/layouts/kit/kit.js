@@ -1,7 +1,7 @@
 import React from "react";
 import * as THREE from 'three';
 import {colors, defaultOpts, opts, windowSize} from '../../utils/config';
-import {Preloader} from '../../components';
+import {Preceholder, Preloader} from '../../components';
 import Storage, {STORAGE_WHEELS} from '../../utils/storage';
 
 const three = THREE;
@@ -192,8 +192,10 @@ class Kit extends React.Component {
       <section>
         {
           !wheels || !Object.keys(models).length ?
-            <h3 className='hero'>added some models</h3>
-            : <div>
+            <div className='hero'>
+              <Preceholder text={'you cannot have models'} status={'danger'}/>
+            </div> :
+            <div>
               <div id='scene' className='d-flex justify-space-center'/>
 
               <div className='d-flex justify-space-center kit-settings-block'>

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link, withRouter} from 'react-router-dom';
 import Storage, {STORAGE_WHEELS} from '../../utils/storage';
-import {Preloader} from '../../components';
+import {Preceholder, Preloader} from '../../components';
 
 class KitList extends Component {
 
@@ -74,7 +74,7 @@ class KitList extends Component {
                   </button>
                 </div>
               );
-            }) : <div>wheel list is empty</div>
+            }) : <Preceholder text={'you cannot have models'} status={'danger'}/>
           }
         </div>
 

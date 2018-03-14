@@ -1,3 +1,4 @@
 import Preloader from './preloader';
+import Preceholder from './placeholder';
 
-export {Preloader};
+export {Preloader, Preceholder};
