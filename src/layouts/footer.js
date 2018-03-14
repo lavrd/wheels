@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const Footer = () => (
   <footer>
     <Link to='/'>
-      <h3>wheels.</h3>
+      <h3>wheels</h3>
     </Link>
     <h4>
       <Link to='https://github.com/spacelavr/' target='_blank' rel='noopener noreferrer'>

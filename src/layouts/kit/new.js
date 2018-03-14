@@ -40,8 +40,8 @@ class KitNew extends Component {
   };
 
   handleChange = (e) => {
-    const target = e.target;
-    const name = target.name;
+    const {target} = e;
+    const {name} = target;
     let value;
     if (!!target.files) value = `/models/${target.files[0].name}`;
     else value = target.value;
@@ -49,7 +49,7 @@ class KitNew extends Component {
   };
 
   disabled = () => {
-    return !this.state.name || !this.state.price;
+    return !this.state.name || !this.state.price || !this.state.model;
   };
 
   render() {

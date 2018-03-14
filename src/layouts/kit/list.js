@@ -36,7 +36,6 @@ class KitList extends Component {
   render() {
     if (this.state.pending) return <Preloader/>;
     const {wheels} = this.state;
-
     return (
       <section className='hero'>
         <div className='d-flex'>
@@ -74,7 +73,7 @@ class KitList extends Component {
                   </button>
                 </div>
               );
-            }) : <Preceholder text={'you cannot have models'} status={'danger'}/>
+            }) : <Preceholder text={'you don`t have models'} status={'danger'}/>
           }
         </div>
 

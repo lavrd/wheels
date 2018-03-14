@@ -75,8 +75,9 @@ class Kit extends React.Component {
 
   loadOneTypeModels = async (models, defaultModel, type) => {
     for (const model of models) {
-      const object = await this.loadModel(model.model, model.name);
-      if (model.name === defaultModel) {
+      const {name} = model;
+      const object = await this.loadModel(model.model, name);
+      if (name === defaultModel) {
         switch (type) {
           case 'wheels':
             this.addWheelToScene(object);
@@ -98,7 +99,7 @@ class Kit extends React.Component {
 
         const model = new three.Mesh(geometry, material);
         this.setOpts(model, defaultOpts);
-        const models = this.state.models;
+        const {models} = this.state;
         models[name] = model;
         this.setState({models: models});
         resolve(model);
@@ -193,7 +194,7 @@ class Kit extends React.Component {
         {
           !wheels || !Object.keys(models).length ?
             <div className='hero'>
-              <Preceholder text={'you cannot have models'} status={'danger'}/>
+              <Preceholder text={'you don`t have models'} status={'danger'}/>
             </div> :
             <div>
               <div id='scene' className='d-flex justify-space-center'/>
