@@ -22,7 +22,7 @@ export default class Storage {
     const items = this.get(name);
     if (!!items) {
       items.splice(id, 1);
-      if (!!items) {
+      if (!items.length) {
         this.remove(name);
         return;
       }
@@ -45,3 +45,4 @@ export default class Storage {
 }
 
 export const STORAGE_WHEELS = 'wheels';
+export const STORAGE_SESSION = 'session';

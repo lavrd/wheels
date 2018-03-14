@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link, Redirect, withRouter} from "react-router-dom";
 import {Preloader} from '../components';
-import Storage from '../utils/storage';
+import Storage, {STORAGE_SESSION} from '../utils/storage';
 
 class SignIn extends Component {
 
@@ -17,14 +17,14 @@ class SignIn extends Component {
   }
 
   componentDidMount() {
-    this.setState({isAuthenticated: !!Storage.get('token'), pending: false});
+    this.setState({isAuthenticated: !!Storage.get(STORAGE_SESSION), pending: false});
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.login === 'admin' && this.state.password === 'admin') {
       Storage.clear();
-      Storage.set('token', 'default');
+      Storage.set(STORAGE_SESSION, 'default');
       this.props.history.push('/kit');
     } else {
       this.setState({error: 'incorrect login or password'});

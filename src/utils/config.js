@@ -41,8 +41,8 @@ opts.wheel_4.pZ = 280;
 opts.wheel_4.name = 'wheel_4';
 
 export const windowSize = {
-  width: 800,
-  height: 600
+  width: 700,
+  height: 500
 };
 
 export const defaultWheels = [{

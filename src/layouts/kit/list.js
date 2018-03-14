@@ -23,11 +23,13 @@ class KitList extends Component {
   };
 
   handleRemove = (id) => {
-    this.setState({wheels: this.state.wheels.splice(id, 1)});
+    const {wheels} = this.state;
+    wheels.splice(id, 1);
+    this.setState({wheels: wheels});
     Storage.splice(STORAGE_WHEELS, id);
   };
 
-  handleUpdate = (e, id) => {
+  handleUpdate = (id) => {
     this.props.history.push('/kit/new', {...this.state.wheels[id], id: id});
   };
 
@@ -49,21 +51,23 @@ class KitList extends Component {
               const wheel = wheels[id];
               return (
                 <div
-                  onClick={(e) => this.handleUpdate(e, id)}
                   className='d-flex cursor-pointer'
                   key={index}
                 >
-                  <div>#{index + 1}</div>
-                  <div>{wheel.name}</div>
-                  <div>{wheel.description}</div>
-                  <div>{wheel.price}</div>
-                  <div style={{
-                    backgroundImage: `url(${wheel.preview})`,
-                    backgroundSize: 'cover',
-                    overflow: 'hidden',
-                    width: 50,
-                    height: 50
-                  }}/>
+                  <div
+                    onClick={() => this.handleUpdate(id)}>
+                    <div>#{index + 1}</div>
+                    <div>{wheel.name}</div>
+                    <div>{wheel.description}</div>
+                    <div>{wheel.price}</div>
+                    <div style={{
+                      backgroundImage: `url(${wheel.preview})`,
+                      backgroundSize: 'cover',
+                      overflow: 'hidden',
+                      width: 50,
+                      height: 50
+                    }}/>
+                  </div>
                   <button
                     onClick={() => this.handleRemove(id)}
                     className='btn-danger'
