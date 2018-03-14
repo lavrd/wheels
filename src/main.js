@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Footer, Header, Kit, KitList, KitNew} from "./layouts";
+import {Footer, Header, KitListP, KitNewP, KitP} from "./layouts";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {Preloader} from './components';
 import Storage, {STORAGE_SESSION} from './utils/storage';
@@ -26,9 +26,9 @@ class Main extends Component {
         <Header/>
 
         <Switch>
-          <Route exact path="/kit" component={Kit}/>
-          <Route exact path="/kit/new" component={KitNew}/>
-          <Route exact path="/kit/list" component={KitList}/>
+          <Route exact path="/kit" component={KitP}/>
+          <Route exact path="/kit/new" component={KitNewP}/>
+          <Route exact path="/kit/list" component={KitListP}/>
           <Redirect to='/404'/>
         </Switch>
 

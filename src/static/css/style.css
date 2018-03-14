@@ -163,6 +163,11 @@ input[type=file] {
   padding: 0;
 }
 
+.bg-img {
+  background-size: cover;
+  overflow: hidden;
+}
+
 form > input {
   width: 100%;
   margin: calc(var(--margin) - 15px) 0 0 0 !important;

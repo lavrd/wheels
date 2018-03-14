@@ -3,7 +3,7 @@ import {Link, withRouter} from 'react-router-dom';
 import Storage, {STORAGE_WHEELS} from '../../utils/storage';
 import {KitListC, Preceholder, Preloader} from '../../components';
 
-class KitList extends Component {
+class KitListP extends Component {
 
   constructor(props) {
     super(props);
@@ -71,4 +71,4 @@ class KitList extends Component {
   }
 }
 
-export default withRouter(KitList);
+export default withRouter(KitListP);

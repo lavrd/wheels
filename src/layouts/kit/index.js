@@ -1,5 +1,5 @@
-import Kit from './kit';
-import KitNew from './new';
-import KitList from './list';
+import KitP from './kit';
+import KitNewP from './new';
+import KitListP from './list';
 
-export {KitNew, KitList, Kit};
+export {KitNewP, KitListP, KitP};

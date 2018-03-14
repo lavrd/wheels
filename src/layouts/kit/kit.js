@@ -6,7 +6,7 @@ import Storage, {STORAGE_WHEELS} from '../../utils/storage';
 
 const three = THREE;
 
-class Kit extends React.Component {
+class KitP extends React.Component {
 
   constructor(props) {
     super(props);
@@ -236,4 +236,4 @@ class Kit extends React.Component {
   }
 }
 
-export default Kit;
+export default KitP;

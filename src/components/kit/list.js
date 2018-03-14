@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const KitListComponent = ({id, handleUpdate, wheel, handleRemove}) => (
+const KitListC = ({id, handleUpdate, wheel, handleRemove}) => (
   <div
     className='d-flex flex-column card m-3'
   >
@@ -13,13 +13,10 @@ const KitListComponent = ({id, handleUpdate, wheel, handleRemove}) => (
       <div className='mt-2'>{wheel.description}</div>
       <div className='mt-2'>{`${wheel.price} $`}</div>
       <div
-        className='mt-2'
+        className='mt-2 bg-img'
         style={{
           backgroundImage: `url(${wheel.preview})`,
-          backgroundSize: 'cover',
-          overflow: 'hidden',
-          width: 100,
-          height: 100
+          width: 100, height: 100
         }}
       />
     </div>
@@ -32,11 +29,11 @@ const KitListComponent = ({id, handleUpdate, wheel, handleRemove}) => (
   </div>
 );
 
-KitListComponent.propTypes = {
+KitListC.propTypes = {
   id: PropTypes.string.isRequired,
   handleUpdate: PropTypes.func.isRequired,
   wheel: PropTypes.object.isRequired,
   handleRemove: PropTypes.func.isRequired
 };
 
-export default KitListComponent;
+export default KitListC;

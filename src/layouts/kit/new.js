@@ -3,7 +3,7 @@ import Storage, {STORAGE_WHEELS} from '../../utils/storage';
 import {defaultWheels} from "../../utils/config";
 import {KitNewC} from '../../components';
 
-class KitNew extends Component {
+class KitNewP extends Component {
 
   constructor(props) {
     super(props);
@@ -71,4 +71,4 @@ class KitNew extends Component {
   }
 }
 
-export default KitNew;
+export default KitNewP;
