@@ -55,3 +55,23 @@ export const wheelsFPath = {
   oz: '/models/oz.json',
   vossen: '/models/vossen.json'
 };
+
+export const defaultWheels = [{
+  model: '/models/enkei.json',
+  name: 'enkei',
+  price: 12345,
+  preview: '/img/cirlce.png',
+  description: 'enkei is a good wheels for sport car'
+}, {
+  model: '/models/oz.json',
+  name: 'oz',
+  price: 12345,
+  preview: '/img/cirlce.png',
+  description: 'oz is a good wheels for sport car'
+}, {
+  model: '/models/vossen.json',
+  name: 'vossen',
+  price: 12345,
+  preview: '/img/cirlce.png',
+  description: 'vossen is a good wheels for sport car'
+}];

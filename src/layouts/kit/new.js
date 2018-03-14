@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Storage, {STORAGE_WHEELS} from '../../utils/storage';
+import {defaultWheels} from "../../utils/config";
 
 class KitNew extends Component {
 
@@ -19,6 +20,12 @@ class KitNew extends Component {
       price: price
     };
   }
+
+  handleDefault = (e) => {
+    e.preventDefault();
+    Storage.set(STORAGE_WHEELS, defaultWheels);
+    this.props.history.push('/kit/list');
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -81,13 +88,21 @@ class KitNew extends Component {
             type='file'
             onChange={this.handleChange}
           />
-          <button
-            type='submit'
-            className='btn-primary'
-            disabled={this.disabled()}
-          >
-            add
-          </button>
+          <div className='d-flex'>
+            <button
+              type='submit'
+              className='btn-primary'
+              disabled={this.disabled()}
+            >
+              add
+            </button>
+            <button
+              className='btn-primary'
+              onClick={this.handleDefault}
+            >
+              default
+            </button>
+          </div>
         </form>
       </section>
     );
