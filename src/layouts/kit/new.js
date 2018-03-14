@@ -94,7 +94,7 @@ class KitNew extends Component {
               className='btn-primary'
               disabled={this.disabled()}
             >
-              add
+              {this.props.location.state ? 'update' : 'add'}
             </button>
             <button
               className='btn-primary'

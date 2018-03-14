@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link, withRouter} from 'react-router-dom';
 import Storage, {STORAGE_WHEELS} from '../../utils/storage';
-import {Preceholder, Preloader} from '../../components';
+import {KitListC, Preceholder, Preloader} from '../../components';
 
 class KitList extends Component {
 
@@ -41,37 +41,13 @@ class KitList extends Component {
         <div className='d-flex'>
           {
             !!wheels.length ? Object.keys(wheels).map((id, index) => {
-              const wheel = wheels[id];
               return (
-                <div
-                  className='d-flex flex-column card m-3'
-                  key={index}
-                >
-                  <div
-                    className='cursor-pointer d-flex flex-column align-items-center'
-                    onClick={() => this.handleUpdate(id)}
-                  >
-                    <div>{wheel.name}</div>
-                    <div className='mt-2'>{wheel.description}</div>
-                    <div className='mt-2'>{`${wheel.price} $`}</div>
-                    <div
-                      className='mt-2'
-                      style={{
-                        backgroundImage: `url(${wheel.preview})`,
-                        backgroundSize: 'cover',
-                        overflow: 'hidden',
-                        width: 100,
-                        height: 100
-                      }}
-                    />
-                  </div>
-                  <button
-                    onClick={() => this.handleRemove(id)}
-                    className='btn-danger mt-2'
-                  >
-                    remove
-                  </button>
-                </div>
+                <KitListC
+                  id={id}
+                  handleUpdate={this.handleUpdate}
+                  wheel={wheels[id]}
+                  handleRemove={this.handleRemove}
+                />
               );
             }) : <Preceholder text={'you don`t have models'} status={'danger'}/>
           }
