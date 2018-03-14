@@ -15,7 +15,7 @@ const Footer = () => (
         barmadzilla
       </Link>
     </h4>
-    <h6>MIT</h6>
+    <h6>Apache License 2.0</h6>
   </footer>
 );
 

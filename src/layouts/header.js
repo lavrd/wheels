@@ -14,6 +14,7 @@ class Header extends Component {
       <header className='d-flex justify-space-between'>
         <div className='d-flex justify-space-between'>
           <div><Link to='/'>wheels.</Link></div>
+          <div><Link to='/kit'>kit</Link></div>
           <div><Link to='/kit/list'>wheel list</Link></div>
         </div>
 

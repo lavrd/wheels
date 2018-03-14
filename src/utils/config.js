@@ -2,7 +2,8 @@ export const colors = {
   primaryColor: '#051923',
   secondColor: '#FFFFFF',
   exColor1: '#E3D0D8',
-  exColor2: '#333745'
+  exColor2: '#333745',
+  exColor3: '#88CCF1'
 };
 
 export const defaultOpts = {
@@ -14,7 +15,7 @@ export const defaultOpts = {
   rY: 0,
   rZ: 0,
 
-  color: '#88CCF1',
+  color: colors.exColor3,
   name: 'default'
 };
 
