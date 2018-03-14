@@ -106,6 +106,10 @@ button:disabled, button:disabled:hover {
   margin: var(--margin);
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
 button {
   cursor: pointer;
   border: none;

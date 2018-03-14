@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import Storage, {STORAGE_WHEELS} from '../../utils/storage';
 import {Preloader} from '../../components';
 
@@ -23,10 +23,12 @@ class KitList extends Component {
   };
 
   handleRemove = (id) => {
-    const {wheels} = this.state;
-    wheels.splice(id, 1);
-    this.setState({wheels: wheels});
+    this.setState({wheels: this.state.wheels.splice(id, 1)});
     Storage.splice(STORAGE_WHEELS, id);
+  };
+
+  handleUpdate = (e, id) => {
+    this.props.history.push('/kit/new', {...this.state.wheels[id], id: id});
   };
 
   render() {
@@ -47,7 +49,8 @@ class KitList extends Component {
               const wheel = wheels[id];
               return (
                 <div
-                  className='d-flex'
+                  onClick={(e) => this.handleUpdate(e, id)}
+                  className='d-flex cursor-pointer'
                   key={index}
                 >
                   <div>#{index + 1}</div>
@@ -78,4 +81,4 @@ class KitList extends Component {
   }
 }
 
-export default KitList;
+export default withRouter(KitList);

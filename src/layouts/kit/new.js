@@ -5,12 +5,18 @@ class KitNew extends Component {
 
   constructor(props) {
     super(props);
+    const {state} = props.location;
+    const name = !!state ? state.name : '';
+    const description = !!state ? state.description : '';
+    const model = !!state ? state.model : null;
+    const preview = !!state ? state.preview : null;
+    const price = !!state ? state.price : '';
     this.state = {
-      name: '',
-      description: '',
-      wheel: null,
-      preview: null,
-      price: ''
+      name: name,
+      description: description,
+      model: model,
+      preview: preview,
+      price: price
     };
   }
 
@@ -20,12 +26,10 @@ class KitNew extends Component {
     const data = this.state;
     data.name = data.name.trim();
     data.description = data.description.trim();
-    Storage.append(STORAGE_WHEELS, data);
-    this.clearFields();
-  };
-
-  clearFields = () => {
-    this.setState({name: '', description: '', price: '', wheel: null, preview: null});
+    const {state} = this.props.location;
+    if (!!state) Storage.updateArr(STORAGE_WHEELS, state.id, data);
+    else Storage.append(STORAGE_WHEELS, data);
+    this.props.history.push('/kit/list');
   };
 
   handleChange = (e) => {
@@ -68,7 +72,7 @@ class KitNew extends Component {
             onChange={this.handleChange}
           />
           <input
-            name='wheel'
+            name='model'
             type='file'
             onChange={this.handleChange}
           />

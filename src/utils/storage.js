@@ -11,7 +11,7 @@ export default class Storage {
     let items = this.get(name);
     if (!!items) items.push(object);
     else items = [object];
-    localStorage.setItem(name, JSON.stringify(items));
+    this.set(name, items);
   }
 
   static remove(name) {
@@ -27,11 +27,20 @@ export default class Storage {
         return;
       }
     } else return;
-    localStorage.setItem(name, JSON.stringify(items));
+    this.set(name, items);
   }
 
   static clear() {
     localStorage.clear();
+  }
+
+  static updateArr(name, id, object) {
+    const items = this.get(name);
+    if (!items) this.append(name, object);
+    else {
+      items[id] = object;
+      this.set(name, items);
+    }
   }
 }
 
