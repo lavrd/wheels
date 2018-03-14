@@ -1,5 +1,5 @@
 import Preloader from './preloader';
 import Preceholder from './placeholder';
-import {KitListC} from './kit';
+import {KitListC, KitNewC} from './kit';
 
-export {Preloader, Preceholder, KitListC};
+export {Preloader, Preceholder, KitNewC, KitListC};

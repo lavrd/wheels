@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Storage, {STORAGE_WHEELS} from '../../utils/storage';
 import {defaultWheels} from "../../utils/config";
+import {KitNewC} from '../../components';
 
 class KitNew extends Component {
 
@@ -55,55 +56,14 @@ class KitNew extends Component {
   render() {
     return (
       <section className='hero'>
-        <form
-          className='d-flex flex-column align-items-center'
-          onSubmit={this.handleSubmit}
-        >
-          <input
-            name='name'
-            value={this.state.name}
-            placeholder='name'
-            onChange={this.handleChange}
-          />
-          <input
-            name='description'
-            value={this.state.description}
-            placeholder='description'
-            onChange={this.handleChange}
-          />
-          <input
-            name='price'
-            type='number'
-            value={this.state.price}
-            placeholder='price'
-            onChange={this.handleChange}
-          />
-          <input
-            name='model'
-            type='file'
-            onChange={this.handleChange}
-          />
-          <input
-            name='preview'
-            type='file'
-            onChange={this.handleChange}
-          />
-          <div className='d-flex mt-3'>
-            <button
-              type='submit'
-              className='btn-primary'
-              disabled={this.disabled()}
-            >
-              {this.props.location.state ? 'update' : 'add'}
-            </button>
-            <button
-              className='btn-primary'
-              onClick={this.handleDefault}
-            >
-              default
-            </button>
-          </div>
-        </form>
+        <KitNewC
+          state={this.state}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          disabled={this.disabled()}
+          isUpdate={!!this.props.location.state}
+          handleDefault={this.handleDefault}
+        />
       </section>
     );
   }
