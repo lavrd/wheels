@@ -40,39 +40,27 @@ opts.wheel_4.pX = -250;
 opts.wheel_4.pZ = 280;
 opts.wheel_4.name = 'wheel_4';
 
-export const defaultCar = 'audi';
-export const defaultWheel = 'vossen';
-
 export const windowSize = {
   width: 800,
   height: 600
-};
-
-export const carsFPath = {
-  audi: '/models/audi.json'
-};
-export const wheelsFPath = {
-  enkei: '/models/enkei.json',
-  oz: '/models/oz.json',
-  vossen: '/models/vossen.json'
 };
 
 export const defaultWheels = [{
   model: '/models/enkei.json',
   name: 'enkei',
   price: 12345,
-  preview: '/img/cirlce.png',
+  preview: '/img/yellow-old-wheel.jpg',
   description: 'enkei is a good wheels for sport car'
 }, {
   model: '/models/oz.json',
   name: 'oz',
   price: 12345,
-  preview: '/img/cirlce.png',
+  preview: '/img/yellow-old-wheel.jpg',
   description: 'oz is a good wheels for sport car'
 }, {
   model: '/models/vossen.json',
   name: 'vossen',
   price: 12345,
-  preview: '/img/cirlce.png',
+  preview: '/img/yellow-old-wheel.jpg',
   description: 'vossen is a good wheels for sport car'
 }];

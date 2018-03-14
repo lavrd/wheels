@@ -57,6 +57,13 @@ class KitList extends Component {
                   <div>{wheel.name}</div>
                   <div>{wheel.description}</div>
                   <div>{wheel.price}</div>
+                  <div style={{
+                    backgroundImage: `url(${wheel.preview})`,
+                    backgroundSize: 'cover',
+                    overflow: 'hidden',
+                    width: 50,
+                    height: 50
+                  }}/>
                   <button
                     onClick={() => this.handleRemove(id)}
                     className='btn-danger'

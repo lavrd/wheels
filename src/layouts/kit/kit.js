@@ -1,16 +1,8 @@
 import React from "react";
 import * as THREE from 'three';
-import {
-  carsFPath,
-  colors,
-  defaultCar,
-  defaultOpts,
-  defaultWheel,
-  opts,
-  wheelsFPath,
-  windowSize
-} from '../../utils/config';
+import {colors, defaultOpts, opts, windowSize} from '../../utils/config';
 import {Preloader} from '../../components';
+import Storage, {STORAGE_WHEELS} from '../../utils/storage';
 
 const three = THREE;
 
@@ -23,17 +15,24 @@ class Kit extends React.Component {
       scene: null,
       camera: null,
       models: {},
+      wheels: [],
       pending: true,
-      currentColor: null,
-      currentWheel: defaultWheel
+      currentColor: 'exColor3',
+      currentWheel: ''
     };
   }
 
   async componentDidMount() {
-    await this.init();
-    await this.setState({pending: false});
-    await document.getElementById('scene').appendChild(this.state.renderer.domElement);
-    this.renderScene();
+    const wheels = Storage.get(STORAGE_WHEELS);
+    if (!wheels) {
+      this.setState({pending: false});
+    } else {
+      this.setState({wheels: wheels, currentWheel: wheels[0].name});
+      await this.init(wheels);
+      await this.setState({pending: false});
+      await document.getElementById('scene').appendChild(this.state.renderer.domElement);
+      this.renderScene();
+    }
   }
 
   init = async () => {
@@ -66,26 +65,42 @@ class Kit extends React.Component {
     scene.add(light_1, light_2, light_3, light_4, lightAmbient);
 
     await this.setState({renderer: renderer, scene: scene, camera: camera});
-    await this.loadOneTypeModels(carsFPath, defaultCar);
-    await this.loadOneTypeModels(wheelsFPath, defaultWheel, 'wheels');
+    await this.loadOneTypeModels([{model: '/models/audi.json', name: 'audi'}], 'audi');
+    await this.loadOneTypeModels(this.state.wheels, this.state.currentWheel, 'wheels');
     window.addEventListener('resize', this.onWindowResize, false);
   };
 
-  loadOneTypeModels = async (fpath, defaultModel, type) => {
-    for (const id in fpath) {
-      if (fpath.hasOwnProperty(id)) {
-        const model = await this.loadModel(fpath, id);
-        if (id === defaultModel) {
-          switch (type) {
-            case 'wheels':
-              this.addWheelToScene(model);
-              break;
-            default:
-              this.state.scene.add(model);
-          }
+  loadOneTypeModels = async (models, defaultModel, type) => {
+    for (const model of models) {
+      const object = await this.loadModel(model.model, model.name);
+      if (model.name === defaultModel) {
+        switch (type) {
+          case 'wheels':
+            this.addWheelToScene(object);
+            break;
+          default:
+            this.state.scene.add(object);
         }
       }
     }
+  };
+
+  loadModel = (filepath, name) => {
+    return new Promise((resolve) => {
+      new three.JSONLoader().load(filepath, (geometry) => {
+        const material = new three.MeshPhongMaterial({
+          flatShading: three.FlatShading,
+          color: defaultOpts.color
+        });
+
+        const model = new three.Mesh(geometry, material);
+        this.setOpts(model, defaultOpts);
+        const models = this.state.models;
+        models[name] = model;
+        this.setState({models: models});
+        resolve(model);
+      });
+    });
   };
 
   addWheelToScene = (model) => {
@@ -120,24 +135,6 @@ class Kit extends React.Component {
     this.setState({camera: camera});
     this.state.renderer.setSize(windowSize.width, windowSize.height);
     this.renderScene();
-  };
-
-  loadModel = (fpVar, name) => {
-    return new Promise((resolve) => {
-      new three.JSONLoader().load(fpVar[name], (geometry) => {
-        const material = new three.MeshPhongMaterial({
-          flatShading: three.FlatShading,
-          color: defaultOpts.color
-        });
-
-        const model = new three.Mesh(geometry, material);
-        this.setOpts(model, defaultOpts);
-        const models = this.state.models;
-        models[name] = model;
-        this.setState({models: models});
-        resolve(model);
-      });
-    });
   };
 
   getCurrentWheels = () => {
@@ -187,37 +184,47 @@ class Kit extends React.Component {
 
   render() {
     if (this.state.pending) return <Preloader/>;
+    const {wheels, models} = this.state;
     return (
       <section>
-        <div id='scene' className='d-flex justify-space-center'/>
+        {
+          !wheels || !Object.keys(models).length ?
+            <h3 className='hero'>added some models</h3>
+            : <div>
+              <div id='scene' className='d-flex justify-space-center'/>
 
-        <div className='d-flex justify-space-center kit-settings-block'>
-          <div className='d-flex wheels-block'>
-            {
-              Object.keys(wheelsFPath).map((id, index) =>
-                <button
-                  onClick={(e) => this.handleChangeWheel(e, id)}
-                  key={index}
-                  disabled={id === this.state.currentWheel}
-                >
-                  {id}
-                </button>
-              )
-            }
-          </div>
+              <div className='d-flex justify-space-center kit-settings-block'>
+                <div className='d-flex wheels-block'>
+                  {
+                    Object.keys(wheels).map((id, index) => {
+                      const wheel = wheels[id];
+                      return (
+                        <button
+                          onClick={(e) => this.handleChangeWheel(e, wheel.name)}
+                          key={index}
+                          disabled={wheel.name === this.state.currentWheel}
+                        >
+                          {wheel.name}
+                        </button>
+                      );
+                    })
+                  }
+                </div>
 
-          <div className="d-flex colors-block">
-            {
-              Object.keys(colors).map((id, index) =>
-                <button
-                  disabled={id === this.state.currentColor}
-                  key={index}
-                  onClick={(e) => this.handleChangeColor(e, id)}
-                />
-              )
-            }
-          </div>
-        </div>
+                <div className="d-flex colors-block">
+                  {
+                    Object.keys(colors).map((id, index) =>
+                      <button
+                        disabled={id === this.state.currentColor}
+                        key={index}
+                        onClick={(e) => this.handleChangeColor(e, id)}
+                      />
+                    )
+                  }
+                </div>
+              </div>
+            </div>
+        }
       </section>
     );
   }

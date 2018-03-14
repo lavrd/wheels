@@ -52,7 +52,7 @@ header > div > div:nth-child(n+2) {
   justify-content: center;
   -webkit-justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: 75vh;
   -webkit-align-items: center;
   align-items: center;
 }

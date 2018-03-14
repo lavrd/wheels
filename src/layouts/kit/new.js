@@ -43,7 +43,7 @@ class KitNew extends Component {
     const target = e.target;
     const name = target.name;
     let value;
-    if (!!target.files) value = target.files[0].name;
+    if (!!target.files) value = `/models/${target.files[0].name}`;
     else value = target.value;
     this.setState({[name]: value});
   };
