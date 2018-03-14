@@ -39,38 +39,36 @@ class KitList extends Component {
 
     return (
       <section className='hero'>
-        <Link to='/kit/new'>
-          <button className='btn-primary'>new</button>
-        </Link>
-
-        <h1>kit list</h1>
-
-        <div className='d-flex flex-column'>
+        <div className='d-flex'>
           {
             !!wheels.length ? Object.keys(wheels).map((id, index) => {
               const wheel = wheels[id];
               return (
                 <div
-                  className='d-flex cursor-pointer'
+                  className='d-flex flex-column card m-3'
                   key={index}
                 >
                   <div
-                    onClick={() => this.handleUpdate(id)}>
-                    <div>#{index + 1}</div>
+                    className='cursor-pointer d-flex flex-column align-items-center'
+                    onClick={() => this.handleUpdate(id)}
+                  >
                     <div>{wheel.name}</div>
-                    <div>{wheel.description}</div>
-                    <div>{wheel.price}</div>
-                    <div style={{
-                      backgroundImage: `url(${wheel.preview})`,
-                      backgroundSize: 'cover',
-                      overflow: 'hidden',
-                      width: 50,
-                      height: 50
-                    }}/>
+                    <div className='mt-2'>{wheel.description}</div>
+                    <div className='mt-2'>{`${wheel.price} $`}</div>
+                    <div
+                      className='mt-2'
+                      style={{
+                        backgroundImage: `url(${wheel.preview})`,
+                        backgroundSize: 'cover',
+                        overflow: 'hidden',
+                        width: 100,
+                        height: 100
+                      }}
+                    />
                   </div>
                   <button
                     onClick={() => this.handleRemove(id)}
-                    className='btn-danger'
+                    className='btn-danger mt-2'
                   >
                     remove
                   </button>
@@ -80,13 +78,20 @@ class KitList extends Component {
           }
         </div>
 
-        <button
-          onClick={this.handleClear}
-          className='btn-danger'
-          disabled={!wheels.length}
+        <div
+          className='d-flex mt-3'
         >
-          clear
-        </button>
+          <Link to='/kit/new'>
+            <button className='btn-primary'>new</button>
+          </Link>
+          <button
+            onClick={this.handleClear}
+            className='btn-danger'
+            disabled={!wheels.length}
+          >
+            clear
+          </button>
+        </div>
       </section>
     );
   }

@@ -25,6 +25,8 @@ header > div > div:nth-child(n+2) {
 
 .d-flex {
   display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
 }
 
 .flex-column {
@@ -52,7 +54,7 @@ header > div > div:nth-child(n+2) {
   justify-content: center;
   -webkit-justify-content: center;
   flex-direction: column;
-  height: 50vh;
+  height: 75vh;
   -webkit-align-items: center;
   align-items: center;
 }
@@ -96,6 +98,20 @@ header > div > div:nth-child(n+2) {
   background-color: var(--ex-color-3);
 }
 
+.card {
+  border: 1px solid var(--primary-color);
+  padding: 50px;
+  border-radius: 3px;
+}
+
+.text-danger {
+  color: var(--ex-color-1);
+}
+
+label {
+  height: 25px;
+}
+
 button:disabled, button:disabled:hover {
   background-color: var(--ex-color-2);
   color: var(--second-color);
@@ -115,6 +131,36 @@ button {
   border: none;
   border-radius: 3px;
   padding: 5px 25px 5px 25px;
+}
+
+textarea {
+  padding: var(--padding);
+  outline: none;
+}
+
+.p-3 {
+  padding: 25px
+}
+
+.m-3 {
+  margin: var(--margin);
+}
+
+input[type=file] {
+  padding: 0;
+}
+
+form > input {
+  width: 100%;
+  margin: calc(var(--margin) - 15px) 0 0 0 !important;
+}
+
+.mt-2 {
+  margin-top: 15px;
+}
+
+.mt-3 {
+  margin-top: 25px;
 }
 
 .btn-primary {
@@ -140,13 +186,17 @@ a:hover {
   color: var(--ex-color-3)
 }
 
+button:hover {
+  background-color: var(--second-color);
+  color: var(--primary-color);
+}
+
 footer {
   text-align: center;
   padding: var(--padding);
 }
 
 input {
-  padding: calc(var(--padding) - 5px);
-  width: 25%;
+  padding: var(--padding);
   outline: none;
 }

@@ -52,6 +52,9 @@ class Kit extends React.Component {
     controls.addEventListener('change', this.renderScene);
     controls.enablePan = false;
     controls.enableZoom = false;
+    controls.enableDamping = false;
+    controls.enableKeys = false;
+    controls.rotateSpeed = 0.5;
 
     const light_1 = new three.PointLight(0xffffff, 0.5, 10000);
     light_1.position.set(50, 150, 0);

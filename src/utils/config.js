@@ -50,17 +50,17 @@ export const defaultWheels = [{
   name: 'enkei',
   price: 12345,
   preview: '/img/yellow-old-wheel.jpg',
-  description: 'enkei is a good wheels for sport car'
+  description: 'enkei is a good wheels for sport car...'
 }, {
   model: '/models/oz.json',
   name: 'oz',
   price: 12345,
   preview: '/img/yellow-old-wheel.jpg',
-  description: 'oz is a good wheels for sport car'
+  description: 'oz is awesome and all!'
 }, {
   model: '/models/vossen.json',
   name: 'vossen',
   price: 12345,
   preview: '/img/yellow-old-wheel.jpg',
-  description: 'vossen is a good wheels for sport car'
+  description: 'so vossen is good.'
 }];

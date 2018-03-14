@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, Redirect, withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {Preloader} from '../components';
 import Storage, {STORAGE_SESSION} from '../utils/storage';
 
@@ -22,7 +22,7 @@ class SignIn extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.login === 'admin' && this.state.password === 'admin') {
+    if (this.state.login === 'valera' && this.state.password === 'valera') {
       Storage.clear();
       Storage.set(STORAGE_SESSION, 'default');
       this.props.history.push('/kit');
@@ -44,30 +44,38 @@ class SignIn extends Component {
 
     return (
       <section className='hero'>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder='login'
-            value={this.state.login}
-            type='text'
-            name='login'
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder='password'
-            value={this.state.password}
-            type='password'
-            name='password'
-            onChange={this.handleChange}
-          />
-          <label>{this.state.error}</label>
+        <form
+          className='d-flex flex-column card'
+          onSubmit={this.handleSubmit}
+        >
+          <div className='d-flex flex-column'>
+            <input
+              placeholder='login'
+              value={this.state.login}
+              type='text'
+              name='login'
+              onChange={this.handleChange}
+            />
+            <label className='text-danger'>{this.state.error}</label>
+          </div>
+
+          <div className='d-flex flex-column'>
+            <input
+              placeholder='password'
+              value={this.state.password}
+              type='password'
+              name='password'
+              onChange={this.handleChange}
+            />
+            <label className='text-danger'>{this.state.error}</label>
+          </div>
           <button
-            className='btn-primary'
+            className='btn-primary p-3 mt-3'
             disabled={!this.state.login || !this.state.password}
             type='submit'
           >
             login
           </button>
-          <Link to='/'><h1>landing</h1></Link>
         </form>
       </section>
     );

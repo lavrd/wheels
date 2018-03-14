@@ -54,7 +54,7 @@ class KitNew extends Component {
 
   render() {
     return (
-      <section>
+      <section className='hero'>
         <form
           className='d-flex flex-column align-items-center'
           onSubmit={this.handleSubmit}
@@ -88,7 +88,7 @@ class KitNew extends Component {
             type='file'
             onChange={this.handleChange}
           />
-          <div className='d-flex'>
+          <div className='d-flex mt-3'>
             <button
               type='submit'
               className='btn-primary'
