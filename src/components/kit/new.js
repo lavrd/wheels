@@ -30,11 +30,13 @@ const KitNewC = ({state, handleSubmit, handleChange, disabled, isUpdate, handleD
       type='file'
       onChange={handleChange}
     />
+    <label>model</label>
     <input
       name='preview'
       type='file'
       onChange={handleChange}
     />
+    <label>preview image</label>
     <div className='d-flex mt-3'>
       <button
         type='submit'

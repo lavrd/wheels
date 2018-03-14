@@ -40,16 +40,15 @@ class KitList extends Component {
       <section className='hero'>
         <div className='d-flex'>
           {
-            !!wheels.length ? Object.keys(wheels).map((id, index) => {
-              return (
-                <KitListC
-                  id={id}
-                  handleUpdate={this.handleUpdate}
-                  wheel={wheels[id]}
-                  handleRemove={this.handleRemove}
-                />
-              );
-            }) : <Preceholder text={'you don`t have models'} status={'danger'}/>
+            !!wheels.length ? Object.keys(wheels).map((id, index) => (
+              <KitListC
+                key={index}
+                id={id}
+                handleUpdate={this.handleUpdate}
+                wheel={wheels[id]}
+                handleRemove={this.handleRemove}
+              />
+            )) : <Preceholder text={'you don`t have models'} status={'danger'}/>
           }
         </div>
 

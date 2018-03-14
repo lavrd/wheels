@@ -34,6 +34,8 @@ class KitNew extends Component {
     const data = this.state;
     data.name = data.name.trim();
     data.description = data.description.trim();
+    if (!data.model.includes('/models/')) data.model = `/models/${data.model}`;
+    if (!data.preview.includes('/img/')) data.preview = `/img/${data.preview}`;
     const {state} = this.props.location;
     if (!!state) Storage.updateArr(STORAGE_WHEELS, state.id, data);
     else Storage.append(STORAGE_WHEELS, data);
@@ -44,7 +46,7 @@ class KitNew extends Component {
     const {target} = e;
     const {name} = target;
     let value;
-    if (!!target.files) value = `/models/${target.files[0].name}`;
+    if (!!target.files) value = target.files[0].name;
     else value = target.value;
     this.setState({[name]: value});
   };
