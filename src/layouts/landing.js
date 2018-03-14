@@ -3,7 +3,11 @@ import {Link} from 'react-router-dom';
 
 const Landing = () => (
   <section className='hero'>
-    <Link to='/kit'><h1>kit</h1></Link>
+    <h1>Wheels.</h1>
+    <h3>Change wheels of car like a boss.</h3>
+    <Link to='/kit'>
+      <button className='btn-primary'>start.</button>
+    </Link>
   </section>
 );
 

@@ -19,6 +19,7 @@ class KitList extends Component {
 
   handleClear = () => {
     Storage.remove(STORAGE_WHEELS);
+    this.setState({wheels: []});
   };
 
   handleRemove = (id) => {
