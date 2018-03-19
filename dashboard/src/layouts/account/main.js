@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {Header} from '.';
+import {withRouter} from 'react-router-dom';
 import api from '../../api';
 import {Preloader} from '../../components';
+import Storage from '../../utils/storage';
 
 class Main extends Component {
 
@@ -13,19 +15,37 @@ class Main extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     api.Account.fetch()
-      .then((acc) => this.setState({account: acc, pending: false}));
+      .then((acc) => this.setState({account: acc, pending: false}))
+      .catch(() => this.setState({pending: false, account: {username: 'error'}}));
   }
+
+  handleDelete = () => {
+    api.Account.delete()
+      .then(() => {
+        Storage.clear();
+        this.props.history.push('/signup');
+      });
+  };
 
   render() {
     if (this.state.pending) return <Preloader/>;
     return (
-      <section>
+      <section
+        className='d-flex flex-column align-items-center'
+      >
         <Header account={this.state.account}/>
+
+        <button
+          onClick={this.handleDelete}
+          className='btn-danger'
+        >
+          delete
+        </button>
       </section>
     );
   }
 }
 
-export default Main;
+export default withRouter(Main);

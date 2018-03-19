@@ -22,6 +22,7 @@ class KitNewP extends Component {
         preview: preview,
         price: price
       },
+      error: '',
       isUpdated: !!props.location.state
     };
   }
@@ -29,15 +30,19 @@ class KitNewP extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.disabled()) return;
-    const data = this.state.data;
-    data.name = data.name.trim();
-    data.description = data.description.trim();
+    const {data} = this.state;
     if (this.state.isUpdated)
       api.Wheels.update(data)
-        .then(() => this.handleSuccess());
+        .then(() => this.handleSuccess())
+        .catch((error) => this.handleError(error));
     else
       api.Wheels.new(data)
-        .then(() => this.handleSuccess());
+        .then(() => this.handleSuccess())
+        .catch((error) => this.handleError(error));
+  };
+
+  handleError = (error) => {
+    this.setState({error: error.message});
   };
 
   handleSuccess = () => {
@@ -69,6 +74,7 @@ class KitNewP extends Component {
     return (
       <section className='hero'>
         <KitNewC
+          error={this.state.error}
           data={this.state.data}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}

@@ -23,5 +23,3 @@ export default class Session {
     return request('DELETE', uri, {name}, true);
   }
 }
-
-// todo create -> new

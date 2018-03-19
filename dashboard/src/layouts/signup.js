@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect, withRouter} from "react-router-dom";
 import Storage, {STORAGE_SESSION} from '../utils/storage';
 import api from '../api';
+import {Placeholder, Preloader} from '../components';
 
 class SignUp extends Component {
 
@@ -11,12 +12,15 @@ class SignUp extends Component {
       isAuthenticated: false,
       login: '',
       password: '',
+      pending: true,
       error: null
     };
   }
 
-  componentDidMount() {
-    this.setState({isAuthenticated: !!Storage.get(STORAGE_SESSION)});
+  componentWillMount() {
+    api.Session.auth()
+      .then(() => this.setState({pending: false, isAuthenticated: true}))
+      .catch(() => this.setState({pending: false, isAuthenticated: false}));
   }
 
   handleSubmit = (e) => {
@@ -42,6 +46,7 @@ class SignUp extends Component {
   };
 
   render() {
+    if (this.state.pending) return <Preloader/>;
     if (this.state.isAuthenticated) return <Redirect to='/'/>;
     return (
       <section className='hero'>
@@ -49,6 +54,11 @@ class SignUp extends Component {
           className='d-flex flex-column card'
           onSubmit={this.handleSubmit}
         >
+          {
+            !this.state.error ? '' :
+              <Placeholder text={this.state.error} status={'danger'}/>
+          }
+
           <div className='d-flex flex-column'>
             <input
               placeholder='login'
@@ -57,9 +67,9 @@ class SignUp extends Component {
               name='login'
               onChange={this.handleChange}
             />
-            <label className='text-danger'>{this.state.error}</label>
           </div>
-          <div className='d-flex flex-column'>
+
+          <div className='d-flex flex-column mt-2'>
             <input
               placeholder='password'
               value={this.state.password}
@@ -67,8 +77,8 @@ class SignUp extends Component {
               name='password'
               onChange={this.handleChange}
             />
-            <label className='text-danger'>{this.state.error}</label>
           </div>
+
           <div className='d-flex flex-column'>
             <button
               className='btn-primary p-3 mt-3'
@@ -77,11 +87,12 @@ class SignUp extends Component {
             >
               signup
             </button>
+
             <button
               onClick={this.handleGoToSignInPage}
               className='btn-primary p-3 mt-2'
             >
-              login
+              signin
             </button>
           </div>
         </form>
@@ -91,4 +102,3 @@ class SignUp extends Component {
 }
 
 export default withRouter(SignUp);
-

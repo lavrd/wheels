@@ -4,6 +4,7 @@ const config = require('config');
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const utils = require('../utils');
+const middleware = require('../middleware');
 
 const setToken = async (userId, username) => {
   const token = jwt.sign(
@@ -17,11 +18,15 @@ const setToken = async (userId, username) => {
 
 const router = utils.asyncRouter(express.Router());
 
+router.get('/auth', middleware.authenticate, async (req, res) => {
+  res.sendStatus(200);
+});
+
 router.post('/signup', async (req, res, next) => {
   const {username, password} = req.body;
-  if (!username || username.length > 64 || !utils.validator.isAscii(username))
+  if (!utils.validator.isUsername(username))
     return next(utils.error.INCORRECT_USERNAME);
-  if (!password || !(password.length >= 8 && password.length <= 64))
+  if (!utils.validator.isPassword(password))
     return next(utils.error.INCORRECT_PASSWORD);
   const hashedPassword = await bcrypt.hash(password, config.get('server.secret.saltRounds'));
   const acc = await db.Account.create({username, password: hashedPassword});

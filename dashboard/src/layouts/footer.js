@@ -6,6 +6,7 @@ const Footer = () => (
     <Link to='/'>
       <h3>wheels</h3>
     </Link>
+
     <h4>
       <Link to='https://github.com/spacelavr/' target='_blank' rel='noopener noreferrer'>
         spacelavr
@@ -15,6 +16,7 @@ const Footer = () => (
         barmadzilla
       </Link>
     </h4>
+
     <h6>Apache License 2.0</h6>
   </footer>
 );

@@ -2,20 +2,22 @@ import React, {Component} from 'react';
 import {Account, Footer, Header, KitListP, KitNewP, KitP} from "./layouts";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {Preloader} from './components';
-import Storage, {STORAGE_SESSION} from './utils/storage';
+import api from './api';
 
 class Main extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isAuthenticated: false,
-      pending: true
+      pending: true,
+      isAuthenticated: false
     };
   }
 
-  componentDidMount() {
-    this.setState({isAuthenticated: !!Storage.get(STORAGE_SESSION), pending: false});
+  componentWillMount() {
+    api.Session.auth()
+      .then(() => this.setState({pending: false, isAuthenticated: true}))
+      .catch(() => this.setState({pending: false, isAuthenticated: false}));
   }
 
   render() {

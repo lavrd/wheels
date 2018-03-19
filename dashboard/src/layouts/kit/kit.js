@@ -1,7 +1,7 @@
 import React from "react";
 import * as THREE from 'three';
 import {colors, defaultOpts, opts, windowSize} from '../../utils/config';
-import {Preceholder, Preloader} from '../../components';
+import {Placeholder, Preloader} from '../../components';
 import api from '../../api';
 
 const three = THREE;
@@ -33,7 +33,8 @@ class KitP extends React.Component {
           await document.getElementById('scene').appendChild(this.state.renderer.domElement);
           this.renderScene();
         }
-      });
+      })
+      .catch(() => this.setState({pending: false}));
   }
 
   init = async () => {
@@ -195,8 +196,9 @@ class KitP extends React.Component {
         {
           !wheels || !Object.keys(models).length ?
             <div className='hero'>
-              <Preceholder text={'you don`t have models'} status={'danger'}/>
+              <Placeholder text={'you don`t have models'} status={'danger'}/>
             </div> :
+
             <div>
               <div id='scene' className='d-flex justify-space-center'/>
 

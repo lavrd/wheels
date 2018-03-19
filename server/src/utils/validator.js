@@ -1,22 +1,30 @@
 const validator = require('validator');
-const utils = require('../utils');
+const error = require('./error');
 
 const isWheel = (wheel) => {
-  if (!validator.isBase64(wheel.model))
-    return utils.error.BAD_PARAMETER('model');
-  if (!validator.isBase64(wheel.preview))
-    return utils.error.BAD_PARAMETER('preview');
-  if (!validator.isDecimal(wheel.price))
-    return utils.error.BAD_PARAMETER('price');
+  if (!validator.isBase64(wheel.model.toString().slice(29)))
+    return error.BAD_PARAMETER('model');
+  if (!validator.isBase64(wheel.preview.toString().slice(23)))
+    return error.BAD_PARAMETER('preview');
+  if (!validator.isDecimal(wheel.price.toString()) || wheel.price < 0)
+    return error.BAD_PARAMETER('price');
   if (wheel.description.length > 256)
-    return utils.error.BAD_PARAMETER('description');
+    return error.BAD_PARAMETER('description');
   if (wheel.name.length > 64)
-    return utils.error.BAD_PARAMETER('name');
+    return error.BAD_PARAMETER('name');
   return null;
 };
 
-const isAscii = (string) => {
-  return validator.isAscii(string);
+const isUsername = (username) => {
+  return !username || username.length > 64 || !validator.isAscii(username.toString());
 };
 
-module.exports = {isWheel, isAscii};
+const isPassword = (password) => {
+  return !!password || (password.length >= 8 && password.length <= 64);
+};
+
+const isAscii = (string) => {
+  return validator.isAscii(string.toString());
+};
+
+module.exports = {isWheel, isAscii, isUsername, isPassword};

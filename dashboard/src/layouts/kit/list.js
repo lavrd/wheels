@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Link, withRouter} from 'react-router-dom';
-import {KitListC, Preceholder, Preloader} from '../../components';
+import {KitListC, Placeholder, Preloader} from '../../components';
 import api from '../../api';
 
 class KitListP extends Component {
@@ -13,11 +13,9 @@ class KitListP extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     api.Wheels.list()
-      .then((wheels) => {
-        this.setState({wheels: wheels || [], pending: false});
-      })
+      .then((wheels) => this.setState({wheels: wheels || [], pending: false}))
       .catch(() => this.setState({pending: false}));
   }
 
@@ -54,7 +52,7 @@ class KitListP extends Component {
                 wheel={wheels[id]}
                 handleRemove={this.handleRemove}
               />
-            )) : <Preceholder text={'you don`t have models'} status={'danger'}/>
+            )) : <Placeholder text={'you don`t have models'} status={'danger'}/>
           }
         </div>
 
@@ -64,6 +62,7 @@ class KitListP extends Component {
           <Link to='/new'>
             <button className='btn-primary'>new</button>
           </Link>
+
           <button
             onClick={this.handleClear}
             className='btn-danger'

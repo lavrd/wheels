@@ -8,8 +8,11 @@ const KitListC = ({id, handleUpdate, wheel, handleRemove}) => (
   >
     <div className='d-flex flex-column align-items-center'>
       <div>{wheel.name}</div>
+
       <div className='mt-2'>{wheel.description}</div>
+
       <div className='mt-2'>{`${wheel.price} $`}</div>
+
       <div
         className='mt-2 bg-img'
         style={{
@@ -18,6 +21,7 @@ const KitListC = ({id, handleUpdate, wheel, handleRemove}) => (
         }}
       />
     </div>
+
     <button
       onClick={() => handleRemove(id)}
       className='btn-danger mt-2'

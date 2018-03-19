@@ -2,12 +2,16 @@ import Storage, {STORAGE_SESSION} from './storage';
 
 export const request = (method, url, body, auth) => {
   let headers = {};
-  headers["Content-Type"] = "application/json";
+  if (!!body) {
+    headers["Content-Type"] = "application/json";
+  }
+  if (auth) {
+    const session = Storage.get(STORAGE_SESSION);
+    headers['Authorization'] = `Bearer ${session && session.token}`;
+  }
+
   let opts = {};
   opts.method = method;
-  if (auth) {
-    headers['Authorization'] = `Bearer ${Storage.get(STORAGE_SESSION).token}`;
-  }
   opts.headers = headers;
   if (!!body) {
     opts.body = JSON.stringify(body);

@@ -1,23 +1,32 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import {Placeholder} from '../../components';
 
-const KitNewC = ({data, handleSubmit, handleChange, disabled, isUpdate}) => (
+const KitNewC = ({data, handleSubmit, handleChange, error, disabled, isUpdate}) => (
   <form
     className='d-flex flex-column align-items-center'
     onSubmit={handleSubmit}
   >
+
+    {
+      !error ? '' :
+        <Placeholder text={error} status={'danger'}/>
+    }
+
     <input
       name='name'
       value={data.name}
       placeholder='name'
       onChange={handleChange}
     />
+
     <input
       name='description'
       value={data.description}
       placeholder='description'
       onChange={handleChange}
     />
+
     <input
       name='price'
       type='number'
@@ -25,18 +34,21 @@ const KitNewC = ({data, handleSubmit, handleChange, disabled, isUpdate}) => (
       placeholder='price'
       onChange={handleChange}
     />
+
     <input
       name='model'
       type='file'
       onChange={handleChange}
     />
     <label>model</label>
+
     <input
       name='preview'
       type='file'
       onChange={handleChange}
     />
     <label>preview image</label>
+
     <button
       type='submit'
       className='btn-primary'
@@ -48,6 +60,7 @@ const KitNewC = ({data, handleSubmit, handleChange, disabled, isUpdate}) => (
 );
 
 KitNewC.propTypes = {
+  error: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,

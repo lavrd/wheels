@@ -34,11 +34,10 @@ Account.findByUsername = async username => {
 Account.create = async data => {
   if (!!await Account.findByUsername(data.username))
     throw utils.error.ALREADY_EXISTS('username');
-  const acc = new Account({
+  return await  new Account({
     username: data.username,
     password: data.password
-  });
-  return await acc.save();
+  }).save();
 };
 
 Account.remove = async username => {
