@@ -1,0 +1,18 @@
+{
+  "db": {
+    "uri": "mongodb://localhost/wheels",
+    "options": {
+      "keepAlive": 1
+    },
+    "debug": false
+  },
+  "server": {
+    "port": 1102,
+    "limit": "5mb",
+    "secret": {
+      "secret": "secret",
+      "saltRounds": 10,
+      "expiresIn": 86400
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "dev": "NODE_ENV=dev node ./src/index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "config": "^1.30.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "http-status": "^1.0.1",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.10",
+    "morgan": "^1.9.0",
+    "validator": "^9.4.1"
+  }
+}
