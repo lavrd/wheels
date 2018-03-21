@@ -1,4 +1,4 @@
-import KitListC from './list';
-import KitNewC from './new';
+import WheelCard from './list';
+import WheelNewForm from './new';
 
-export {KitListC, KitNewC};
+export {WheelCard, WheelNewForm};

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Link, withRouter} from 'react-router-dom';
-import {KitListC, Placeholder, Preloader} from '../../components';
+import {Placeholder, Preloader, WheelCard} from '../../components';
 import api from '../../api';
 
 class KitListP extends Component {
@@ -45,7 +45,7 @@ class KitListP extends Component {
         <div className='d-flex'>
           {
             !!wheels.length ? Object.keys(wheels).map((id, index) => (
-              <KitListC
+              <WheelCard
                 key={index}
                 id={id}
                 handleUpdate={this.handleUpdate}

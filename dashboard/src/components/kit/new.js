@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {Placeholder} from '../../components';
 
-const KitNewC = ({data, handleSubmit, handleChange, error, disabled, isUpdate}) => (
+const WheelNewForm = ({data, handleSubmit, handleChange, error, disabled, isUpdate}) => (
   <form
     className='d-flex flex-column align-items-center'
     onSubmit={handleSubmit}
@@ -59,7 +59,7 @@ const KitNewC = ({data, handleSubmit, handleChange, error, disabled, isUpdate}) 
   </form>
 );
 
-KitNewC.propTypes = {
+WheelNewForm.propTypes = {
   error: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -68,4 +68,4 @@ KitNewC.propTypes = {
   isUpdate: PropTypes.bool.isRequired
 };
 
-export default KitNewC;
+export default WheelNewForm;

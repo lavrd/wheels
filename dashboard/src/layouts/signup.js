@@ -4,7 +4,7 @@ import Storage, {STORAGE_SESSION} from '../utils/storage';
 import api from '../api';
 import {Placeholder, Preloader} from '../components';
 
-class SignUp extends Component {
+class SignUpP extends Component {
 
   constructor(props) {
     super(props);
@@ -101,4 +101,4 @@ class SignUp extends Component {
   }
 }
 
-export default withRouter(SignUp);
+export default withRouter(SignUpP);

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {KitNewC} from '../../components';
+import {WheelNewForm} from '../../components';
 import api from '../../api';
 
 class KitNewP extends Component {
@@ -73,7 +73,7 @@ class KitNewP extends Component {
   render() {
     return (
       <section className='hero'>
-        <KitNewC
+        <WheelNewForm
           error={this.state.error}
           data={this.state.data}
           handleSubmit={this.handleSubmit}

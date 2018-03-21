@@ -1,5 +1,5 @@
 import Preloader from './preloader';
 import Placeholder from './placeholder';
-import {KitListC, KitNewC} from './kit';
+import {WheelCard, WheelNewForm} from './kit';
 
-export {Preloader, Placeholder, KitNewC, KitListC};
+export {Preloader, Placeholder, WheelCard, WheelNewForm};

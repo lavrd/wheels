@@ -1,19 +1,19 @@
 {
   "db": {
-    "uri": "mongodb://localhost/wheels",
+    "uri": "mongodb://mongo/wheels",
     "options": {
       "keepAlive": 1
     },
     "debug": false
   },
   "server": {
-    "morgan": "dev",
+    "morgan": "combined",
     "port": 1102,
     "limit": "50mb",
     "secret": {
       "secret": "secret",
-      "saltRounds": 1,
-      "expiresIn": 0
+      "saltRounds": 10,
+      "expiresIn": 86400
     }
   }
 }

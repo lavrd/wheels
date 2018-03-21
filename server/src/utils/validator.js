@@ -16,7 +16,7 @@ const isWheel = (wheel) => {
 };
 
 const isUsername = (username) => {
-  return !username || username.length > 64 || !validator.isAscii(username.toString());
+  return !!username || username.length < 64 || validator.isAscii(username.toString());
 };
 
 const isPassword = (password) => {

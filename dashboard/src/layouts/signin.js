@@ -4,7 +4,7 @@ import Storage, {STORAGE_SESSION} from '../utils/storage';
 import api from '../api';
 import {Placeholder, Preloader} from '../components';
 
-class SignIn extends Component {
+class SignInP extends Component {
 
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class SignIn extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    api.Session.login({username: this.state.login, password: this.state.password})
+    api.Session.signin({username: this.state.login, password: this.state.password})
       .then((token) => {
         Storage.clear();
         Storage.set(STORAGE_SESSION, token);
@@ -95,6 +95,7 @@ class SignIn extends Component {
             >
               signup
             </button>
+            <a href='http://localhost:1102/stud.jpg'>Отчет</a>
           </div>
         </form>
       </section>
@@ -102,4 +103,4 @@ class SignIn extends Component {
   }
 }
 
-export default withRouter(SignIn);
+export default withRouter(SignInP);

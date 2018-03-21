@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const config = require('config');
 const db = require('../db');
 const jwt = require('jsonwebtoken');
@@ -28,7 +28,7 @@ router.post('/signup', async (req, res, next) => {
     return next(utils.error.INCORRECT_USERNAME);
   if (!utils.validator.isPassword(password))
     return next(utils.error.INCORRECT_PASSWORD);
-  const hashedPassword = await bcrypt.hash(password, config.get('server.secret.saltRounds'));
+  const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(config.get('server.secret.saltRounds')));
   const acc = await db.Account.create({username, password: hashedPassword});
   const token = await setToken(acc._id, username);
   res.status(200).send({token});
@@ -37,7 +37,7 @@ router.post('/signup', async (req, res, next) => {
 router.post('/signin', async (req, res, next) => {
   const {username, password} = req.body;
   const acc = await db.Account.findByUsername(username);
-  if (!acc || !(await bcrypt.compare(password, acc.password)))
+  if (!acc || !(bcrypt.compareSync(password, acc.password)))
     return next(utils.error.INCORRECT_CREDENTIALS);
   const token = await setToken(acc._id, username);
   res.status(200).send({token});

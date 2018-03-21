@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "dev": "NODE_ENV=dev node ./src/index.js"
+    "dev": "NODE_ENV=dev node ./src/index.js",
+    "pro": "NODE_ENV=pro node ./src/index.js"
   },
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "config": "^1.30.0",
     "cors": "^2.8.4",
