@@ -192,14 +192,14 @@ class KitP extends React.Component {
     if (this.state.pending) return <Preloader/>;
     const {wheels, models} = this.state;
     return (
-      <section>
+      <>
         {
           !wheels || !Object.keys(models).length ?
             <div className='hero'>
               <Placeholder text={'you don`t have models'} status={'danger'}/>
             </div> :
 
-            <div>
+            <>
               <div id='scene' className='d-flex justify-space-center'/>
 
               <div className='d-flex justify-space-center kit-settings-block'>
@@ -232,9 +232,9 @@ class KitP extends React.Component {
                   }
                 </div>
               </div>
-            </div>
+            </>
         }
-      </section>
+      </>
     );
   }
 }

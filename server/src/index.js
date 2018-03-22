@@ -11,8 +11,6 @@ app.use(morgan(config.get('server.morgan')));
 app.use(bodyParser.json({limit: config.get('server.limit')}));
 app.use(cors());
 
-app.use(express.static('lab'))
-
 require('./routes/index')(app);
 
 app.use((error, req, res, next) => {
