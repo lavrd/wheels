@@ -11,28 +11,19 @@ const schema = new utils.mongoose.Schema({
 
 const Wheels = utils.mongoose.model("wheels", schema);
 
-Wheels.findByUsernameAndName = async (username, name) => {
-  return await Wheels.findOne({username, name});
-};
+Wheels.findByUsernameAndName = async (username, name) => await Wheels.findOne({username, name});
 
-Wheels.findByUsername = async username => {
-  return await Wheels.find({username});
-};
+Wheels.findByUsername = async username => await Wheels.find({username});
 
-Wheels.removeAll = async username => {
-  return await Wheels.deleteMany({username});
-};
+Wheels.removeAll = async username => await Wheels.deleteMany({username});
 
-Wheels.update = async (username, data) => {
-  return await Wheels.findOneAndUpdate(
+Wheels.update = async (username, data) =>
+  await Wheels.findOneAndUpdate(
     {username: username, _id: data.id},
     data
   );
-};
 
-Wheels.remove = async (username, name) => {
-  return await Wheels.findOneAndRemove({username, name});
-};
+Wheels.remove = async (username, name) => await Wheels.findOneAndRemove({username, name});
 
 Wheels.create = async (data) => {
   if (!!await Wheels.findByUsernameAndName(data.username, data.name))

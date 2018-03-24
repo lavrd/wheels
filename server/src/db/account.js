@@ -9,27 +9,23 @@ const schema = new utils.mongoose.Schema({
 
 const Account = utils.mongoose.model("account", schema);
 
-Account.findByToken = async token => {
-  return await Account.findOne({token});
-};
+Account.findByToken = async token => await Account.findOne({token});
 
-Account.setToken = async (username, token) => {
-  return await Account.findOneAndUpdate(
+Account.setToken = async (username, token) =>
+  await Account.findOneAndUpdate(
     {username},
     {token}
   );
-};
 
-Account.removeToken = async username => {
-  return await Account.findOneAndUpdate(
+Account.removeToken = async username =>
+  await Account.findOneAndUpdate(
     {username},
     {token: null}
   );
-};
 
-Account.findByUsername = async username => {
-  return await Account.findOne({username});
-};
+
+Account.findByUsername = async username => await Account.findOne({username});
+
 
 Account.create = async data => {
   if (!!await Account.findByUsername(data.username))
