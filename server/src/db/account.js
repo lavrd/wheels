@@ -23,14 +23,12 @@ Account.removeToken = async username =>
     {token: null}
   );
 
-
 Account.findByUsername = async username => await Account.findOne({username});
 
-
 Account.create = async data => {
-  if (!!await Account.findByUsername(data.username))
+  if (await Account.findByUsername(data.username))
     throw utils.error.ALREADY_EXISTS('username');
-  return await  new Account({
+  return await new Account({
     username: data.username,
     password: data.password
   }).save();

@@ -38,7 +38,7 @@ class KitListP extends Component {
   };
 
   render() {
-    if (this.state.pending) return <Preloader/>;
+    if (this.state.pending) return <Preloader />;
     const {wheels} = this.state;
     return (
       <section className='hero'>
@@ -52,7 +52,7 @@ class KitListP extends Component {
                 wheel={wheels[id]}
                 handleRemove={this.handleRemove}
               />
-            )) : <Placeholder text={'you don`t have models'} status={'danger'}/>
+            )) : <Placeholder text={'you don`t have models'} status={'danger'} />
           }
         </div>
 

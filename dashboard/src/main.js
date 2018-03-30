@@ -21,21 +21,21 @@ class Main extends Component {
   }
 
   render() {
-    if (this.state.pending) return <Preloader/>;
-    if (!this.state.isAuthenticated) return <Redirect to='/signin'/>;
+    if (this.state.pending) return <Preloader />;
+    if (!this.state.isAuthenticated) return <Redirect to='/signin' />;
     return (
       <section>
-        <Header/>
+        <Header />
 
         <Switch>
-          <Route exact path="/" component={KitP}/>
-          <Route exact path="/new" component={KitNewP}/>
-          <Route exact path="/list" component={KitListP}/>
-          <Route exact path="/account" component={Account}/>
-          <Redirect to='/404'/>
+          <Route exact path="/" component={KitP} />
+          <Route exact path="/new" component={KitNewP} />
+          <Route exact path="/list" component={KitListP} />
+          <Route exact path="/account" component={Account} />
+          <Redirect to='/404' />
         </Switch>
 
-        <Footer/>
+        <Footer />
       </section>
     );
   }

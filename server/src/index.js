@@ -13,7 +13,9 @@ app.use(cors());
 
 require('./routes/index')(app);
 
+/* eslint-disable no-unused-vars */
 app.use((error, req, res, next) => {
+  /* eslint-enable no-unused-vars */
   console.error(error);
   if (!error.code || !error.message) {
     error = utils.error.INTERNAL_SERVER_ERROR;

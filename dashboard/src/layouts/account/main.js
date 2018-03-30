@@ -30,12 +30,12 @@ class Main extends Component {
   };
 
   render() {
-    if (this.state.pending) return <Preloader/>;
+    if (this.state.pending) return <Preloader />;
     return (
       <section
         className='d-flex flex-column align-items-center'
       >
-        <Header account={this.state.account}/>
+        <Header account={this.state.account} />
 
         <button
           onClick={this.handleDelete}

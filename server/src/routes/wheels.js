@@ -8,7 +8,7 @@ const router = utils.asyncRouter(express.Router());
 router.post('/', middleware.authenticate, async (req, res, next) => {
   const {acc, body} = req;
   const error = utils.validator.isWheel(body);
-  if (!!error)
+  if (error)
     return next(error);
   body.username = acc.username;
   await db.Wheels.create(body);
@@ -17,7 +17,7 @@ router.post('/', middleware.authenticate, async (req, res, next) => {
 
 router.delete('/', middleware.authenticate, async (req, res) => {
   const {acc, body, query} = req;
-  if (!!query.all)
+  if (query.all)
     await db.Wheels.removeAll(acc.username);
   else
     await db.Wheels.remove(acc.username, body.name);
@@ -27,7 +27,7 @@ router.delete('/', middleware.authenticate, async (req, res) => {
 router.put('/', middleware.authenticate, async (req, res, next) => {
   const {acc, body} = req;
   const error = utils.validator.isWheel(body);
-  if (!!error)
+  if (error)
     return next(error);
   await db.Wheels.update(acc.username, body);
   res.sendStatus(200);

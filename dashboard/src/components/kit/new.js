@@ -7,10 +7,8 @@ const WheelNewForm = ({data, handleSubmit, handleChange, error, disabled, isUpda
     className='d-flex flex-column align-items-center'
     onSubmit={handleSubmit}
   >
-
     {
-      !error ? '' :
-        <Placeholder text={error} status={'danger'}/>
+      !error ? '' : <Placeholder text={error} status={'danger'} />
     }
 
     <input

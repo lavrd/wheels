@@ -46,8 +46,8 @@ class SignUpP extends Component {
   };
 
   render() {
-    if (this.state.pending) return <Preloader/>;
-    if (this.state.isAuthenticated) return <Redirect to='/'/>;
+    if (this.state.pending) return <Preloader />;
+    if (this.state.isAuthenticated) return <Redirect to='/' />;
     return (
       <section className='hero'>
         <form
@@ -56,7 +56,7 @@ class SignUpP extends Component {
         >
           {
             !this.state.error ? '' :
-              <Placeholder text={this.state.error} status={'danger'}/>
+              <Placeholder text={this.state.error} status={'danger'} />
           }
 
           <div className='d-flex flex-column'>

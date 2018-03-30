@@ -26,7 +26,7 @@ Wheels.update = async (username, data) =>
 Wheels.remove = async (username, name) => await Wheels.findOneAndRemove({username, name});
 
 Wheels.create = async (data) => {
-  if (!!await Wheels.findByUsernameAndName(data.username, data.name))
+  if (await Wheels.findByUsernameAndName(data.username, data.name))
     throw utils.error.ALREADY_EXISTS('wheel');
   return await new Wheels({
     username: data.username,

@@ -189,18 +189,18 @@ class KitP extends React.Component {
   };
 
   render() {
-    if (this.state.pending) return <Preloader/>;
+    if (this.state.pending) return <Preloader />;
     const {wheels, models} = this.state;
     return (
       <>
         {
           !wheels || !Object.keys(models).length ?
             <div className='hero'>
-              <Placeholder text={'you don`t have models'} status={'danger'}/>
+              <Placeholder text={'you don`t have models'} status={'danger'} />
             </div> :
 
             <>
-              <div id='scene' className='d-flex justify-space-center'/>
+              <div id='scene' className='d-flex justify-space-center' />
 
               <div className='d-flex justify-space-center kit-settings-block'>
                 <div className='d-flex wheels-block'>
