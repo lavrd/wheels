@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect, withRouter} from "react-router-dom";
-import Storage, {STORAGE_SESSION} from '../utils/storage';
+import {Storage, STORAGE_SESSION} from '../utils';
 import api from '../api';
 import {Placeholder, Preloader} from '../components';
 
@@ -17,7 +17,7 @@ class SignUpP extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     api.Session.auth()
       .then(() => this.setState({pending: false, isAuthenticated: true}))
       .catch(() => this.setState({pending: false, isAuthenticated: false}));

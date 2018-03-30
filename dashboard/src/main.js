@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Account, Footer, Header, KitListP, KitNewP, KitP} from "./layouts";
+import React, {Component, Fragment} from 'react';
+import {Account, Footer, Header, Wheels, WheelList, NewWheel} from "./layouts";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {Preloader} from './components';
 import api from './api';
@@ -24,19 +24,19 @@ class Main extends Component {
     if (this.state.pending) return <Preloader />;
     if (!this.state.isAuthenticated) return <Redirect to='/signin' />;
     return (
-      <section>
+      <Fragment>
         <Header />
 
         <Switch>
-          <Route exact path="/" component={KitP} />
-          <Route exact path="/new" component={KitNewP} />
-          <Route exact path="/list" component={KitListP} />
+          <Route exact path="/" component={Wheels} />
+          <Route exact path="/new" component={NewWheel} />
+          <Route exact path="/list" component={WheelList} />
           <Route exact path="/account" component={Account} />
           <Redirect to='/404' />
         </Switch>
 
         <Footer />
-      </section>
+      </Fragment>
     );
   }
 }

@@ -1,5 +1,5 @@
 import Preloader from './preloader';
 import Placeholder from './placeholder';
-import {WheelCard, WheelNewForm} from './kit';
+import {WheelCard, NewWheelForm} from './wheels';
 
-export {Preloader, Placeholder, WheelCard, WheelNewForm};
+export {Preloader, Placeholder, WheelCard, NewWheelForm};

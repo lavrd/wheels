@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   primaryColor: '#051923',
   secondColor: '#FFFFFF',
   exColor1: '#E3D0D8',
@@ -6,7 +6,7 @@ export const colors = {
   exColor3: '#88CCF1'
 };
 
-export const defaultOpts = {
+const defaultOpts = {
   pX: 0,
   pY: -100,
   pZ: 0,
@@ -19,7 +19,7 @@ export const defaultOpts = {
   name: 'default'
 };
 
-export const opts = {
+const opts = {
   wheel_1: Object.assign({}, defaultOpts),
   wheel_2: Object.assign({}, defaultOpts),
   wheel_3: Object.assign({}, defaultOpts),
@@ -40,7 +40,9 @@ opts.wheel_4.pX = -250;
 opts.wheel_4.pZ = 280;
 opts.wheel_4.name = 'wheel_4';
 
-export const windowSize = {
+const windowSize = {
   width: 700,
   height: 500
 };
+
+export {colors, defaultOpts, opts, windowSize};

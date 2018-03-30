@@ -3,7 +3,7 @@ import {Header} from '.';
 import {withRouter} from 'react-router-dom';
 import api from '../../api';
 import {Preloader} from '../../components';
-import Storage from '../../utils/storage';
+import {Storage} from '../../utils';
 
 class Main extends Component {
 
@@ -15,7 +15,7 @@ class Main extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     api.Account.fetch()
       .then((acc) => this.setState({account: acc, pending: false}))
       .catch(() => this.setState({pending: false, account: {username: 'error'}}));

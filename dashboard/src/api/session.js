@@ -1,4 +1,4 @@
-import {request} from '../utils/http';
+import {request} from '../utils';
 
 const api_host = process.env.REACT_APP_API_HOST;
 

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Link, withRouter} from 'react-router-dom';
-import Storage from '../utils/storage';
+import {Storage} from '../utils';
 
 class Header extends Component {
 
@@ -13,7 +13,7 @@ class Header extends Component {
     return (
       <header className='d-flex justify-space-between'>
         <div className='d-flex justify-space-between'>
-          <div><Link to='/'>kit</Link></div>
+          <div><Link to='/'>wheels</Link></div>
           <div><Link to='/list'>list</Link></div>
           <div><Link to='/new'>new</Link></div>
         </div>

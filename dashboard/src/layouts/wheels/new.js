@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {WheelNewForm} from '../../components';
+import {NewWheelForm} from '../../components';
 import api from '../../api';
 
-class KitNewP extends Component {
+class NewWheel extends Component {
 
   constructor(props) {
     super(props);
@@ -73,7 +73,7 @@ class KitNewP extends Component {
   render() {
     return (
       <section className='hero'>
-        <WheelNewForm
+        <NewWheelForm
           error={this.state.error}
           data={this.state.data}
           handleSubmit={this.handleSubmit}
@@ -86,4 +86,4 @@ class KitNewP extends Component {
   }
 }
 
-export default KitNewP;
+export default NewWheel;

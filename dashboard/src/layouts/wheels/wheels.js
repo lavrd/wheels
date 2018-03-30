@@ -1,12 +1,12 @@
-import React from "react";
+import React, {Fragment, Component} from "react";
 import * as THREE from 'three';
-import {colors, defaultOpts, opts, windowSize} from '../../utils/config';
+import {colors, defaultOpts, opts, windowSize} from '../../utils';
 import {Placeholder, Preloader} from '../../components';
 import api from '../../api';
 
 const three = THREE;
 
-class KitP extends React.Component {
+class Wheels extends Component {
 
   constructor(props) {
     super(props);
@@ -18,7 +18,8 @@ class KitP extends React.Component {
       wheels: [],
       pending: true,
       currentColor: 'exColor3',
-      currentWheel: ''
+      currentWheel: '',
+      error: ''
     };
   }
 
@@ -34,7 +35,7 @@ class KitP extends React.Component {
           this.renderScene();
         }
       })
-      .catch(() => this.setState({pending: false}));
+      .catch(error => this.setState({pending: false, error: error.message}));
   }
 
   init = async () => {
@@ -190,16 +191,17 @@ class KitP extends React.Component {
 
   render() {
     if (this.state.pending) return <Preloader />;
+    if (this.state.error) return <Placeholder text={this.state.error} status={'danger'} />;
     const {wheels, models} = this.state;
     return (
-      <>
+      <Fragment>
         {
           !wheels || !Object.keys(models).length ?
             <div className='hero'>
               <Placeholder text={'you don`t have models'} status={'danger'} />
             </div> :
 
-            <>
+            <Fragment>
               <div id='scene' className='d-flex justify-space-center' />
 
               <div className='d-flex justify-space-center kit-settings-block'>
@@ -232,11 +234,11 @@ class KitP extends React.Component {
                   }
                 </div>
               </div>
-            </>
+            </Fragment>
         }
-      </>
+      </Fragment>
     );
   }
 }
 
-export default KitP;
+export default Wheels;

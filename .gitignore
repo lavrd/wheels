@@ -5,3 +5,5 @@ server/node_modules
 
 dashboard/package-lock.json
 dashboard/node_modules
+
+.vscode

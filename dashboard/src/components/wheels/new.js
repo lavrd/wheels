@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {Placeholder} from '../../components';
 
-const WheelNewForm = ({data, handleSubmit, handleChange, error, disabled, isUpdate}) => (
+const NewWheelForm = ({data, handleSubmit, handleChange, error, disabled, isUpdate}) => (
   <form
     className='d-flex flex-column align-items-center'
     onSubmit={handleSubmit}
@@ -57,7 +57,7 @@ const WheelNewForm = ({data, handleSubmit, handleChange, error, disabled, isUpda
   </form>
 );
 
-WheelNewForm.propTypes = {
+NewWheelForm.propTypes = {
   error: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -66,4 +66,4 @@ WheelNewForm.propTypes = {
   isUpdate: PropTypes.bool.isRequired
 };
 
-export default WheelNewForm;
+export default NewWheelForm;

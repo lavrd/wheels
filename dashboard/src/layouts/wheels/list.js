@@ -3,25 +3,27 @@ import {Link, withRouter} from 'react-router-dom';
 import {Placeholder, Preloader, WheelCard} from '../../components';
 import api from '../../api';
 
-class KitListP extends Component {
+class WheelList extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       pending: true,
-      wheels: []
+      wheels: [],
+      error: ''
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     api.Wheels.list()
       .then((wheels) => this.setState({wheels: wheels || [], pending: false}))
-      .catch(() => this.setState({pending: false}));
+      .catch((error) => this.setState({pending: false, error: error.message}));
   }
 
   handleClear = () => {
     api.Wheels.remove('', true)
-      .then(() => this.setState({wheels: []}));
+      .then(() => this.setState({wheels: []}))
+      .catch(error => this.setState({error: error.message}));
   };
 
   handleRemove = (id) => {
@@ -30,7 +32,8 @@ class KitListP extends Component {
       .then(() => {
         wheels.splice(id, 1);
         this.setState({wheels: wheels});
-      });
+      })
+      .catch(error => this.setState({error: error.message}));
   };
 
   handleUpdate = (id) => {
@@ -42,6 +45,10 @@ class KitListP extends Component {
     const {wheels} = this.state;
     return (
       <section className='hero'>
+        {
+          !this.state.error ? '' : <Placeholder text={this.state.error} status={'danger'} />
+        }
+
         <div className='d-flex'>
           {
             !!wheels.length ? Object.keys(wheels).map((id, index) => (
@@ -76,4 +83,4 @@ class KitListP extends Component {
   }
 }
 
-export default withRouter(KitListP);
+export default withRouter(WheelList);

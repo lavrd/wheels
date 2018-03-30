@@ -1,4 +1,4 @@
-export default class Storage {
+class Storage {
   static set(name, object) {
     localStorage.setItem(name, JSON.stringify(object));
   }
@@ -12,4 +12,6 @@ export default class Storage {
   }
 }
 
-export const STORAGE_SESSION = 'session';
+const STORAGE_SESSION = 'session';
+
+export {Storage, STORAGE_SESSION};

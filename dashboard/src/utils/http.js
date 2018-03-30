@@ -1,6 +1,6 @@
-import Storage, {STORAGE_SESSION} from './storage';
+import {Storage, STORAGE_SESSION} from './storage';
 
-export const request = (method, url, body, auth) => {
+const request = (method, url, body, auth) => {
   let headers = {};
   if (!!body) {
     headers["Content-Type"] = "application/json";
@@ -31,3 +31,5 @@ export const request = (method, url, body, auth) => {
       });
     });
 };
+
+export {request};

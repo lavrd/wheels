@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect, withRouter} from "react-router-dom";
-import Storage, {STORAGE_SESSION} from '../utils/storage';
+import {Storage, STORAGE_SESSION} from '../utils';
 import api from '../api';
 import {Placeholder, Preloader} from '../components';
 
@@ -17,7 +17,7 @@ class SignInP extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     api.Session.auth()
       .then(() => this.setState({pending: false, isAuthenticated: true}))
       .catch(() => this.setState({pending: false, isAuthenticated: false}));
@@ -95,7 +95,6 @@ class SignInP extends Component {
             >
               signup
             </button>
-            <a href='http://localhost:1102/stud.jpg'>Отчет</a>
           </div>
         </form>
       </section>
