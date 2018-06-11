@@ -1,0 +1,50 @@
+@import "bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --primary-color: #051923;
+  --second-color: #FFFFFF;
+  --ex-color-1: #E3D0D8;
+  --ex-color-2: #333745;
+  --ex-color-3: #88CCF1;
+}
+
+.wheels-block > button:hover {
+  background-color: var(--ex-color-1);
+}
+
+.wheels-block > button {
+  color: var(--primary-color);
+  background-color: var(--second-color);
+}
+
+.colors-block > button:nth-child(1) {
+  background-color: var(--primary-color);
+}
+
+.colors-block > button:nth-child(2) {
+  background-color: var(--second-color);
+}
+
+.colors-block > button:nth-child(3) {
+  background-color: var(--ex-color-1);
+}
+
+.colors-block > button:nth-child(4) {
+  background-color: var(--ex-color-2);
+}
+
+.colors-block > button:nth-child(5) {
+  border: 1px solid var(--primary-color);
+  background-color: var(--ex-color-3);
+}
+
+button:disabled, button:disabled:hover {
+  background-color: var(--ex-color-2);
+  color: var(--second-color);
+  opacity: 0.1;
+}

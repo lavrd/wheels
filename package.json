@@ -1,0 +1,13 @@
+{
+  "homepage": "spacelavr.github.io/wheels",
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "^1.1.4",
+    "three": "^0.93.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
+}
