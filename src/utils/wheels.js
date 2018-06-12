@@ -47,12 +47,12 @@ const windowSize = {
 };
 
 const carsFPath = {
-  audi: '/models/audi.json'
+  audi: `${process.env.PUBLIC_URL}/models/audi.json`
 };
 
 const wheelsFPath = {
-  enkei: '/models/enkei.json',
-  vossen: '/models/vossen.json'
+  enkei: `${process.env.PUBLIC_URL}/models/enkei.json`,
+  vossen: `${process.env.PUBLIC_URL}/models/vossen.json`
 };
 
 export {colors, defaultOpts, opts, windowSize, wheelsFPath, carsFPath};
