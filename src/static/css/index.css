@@ -13,8 +13,8 @@ body {
   --ex-color-3: #88CCF1;
 }
 
-.wheels-block > button:hover {
-  background-color: var(--ex-color-1);
+.btn {
+  border: none;
 }
 
 .wheels-block > button {
@@ -39,11 +39,10 @@ body {
 }
 
 .colors-block > button:nth-child(5) {
-  border: 1px solid var(--primary-color);
   background-color: var(--ex-color-3);
 }
 
-button:disabled, button:disabled:hover {
+button:disabled {
   background-color: var(--ex-color-2);
   color: var(--second-color);
   opacity: 0.1;
