@@ -212,18 +212,18 @@ module.exports = function (THREE) {
 
     this.dispose = function () {
 
-      scope.domElement.removeEventListener('contextmenu', onContextMenu, false);
-      scope.domElement.removeEventListener('mousedown', onMouseDown, false);
-      scope.domElement.removeEventListener('wheel', onMouseWheel, false);
+      scope.domElement.removeEventListener("contextmenu", onContextMenu, false);
+      scope.domElement.removeEventListener("mousedown", onMouseDown, false);
+      scope.domElement.removeEventListener("wheel", onMouseWheel, false);
 
-      scope.domElement.removeEventListener('touchstart', onTouchStart, false);
-      scope.domElement.removeEventListener('touchend', onTouchEnd, false);
-      scope.domElement.removeEventListener('touchmove', onTouchMove, false);
+      scope.domElement.removeEventListener("touchstart", onTouchStart, false);
+      scope.domElement.removeEventListener("touchend", onTouchEnd, false);
+      scope.domElement.removeEventListener("touchmove", onTouchMove, false);
 
-      document.removeEventListener('mousemove', onMouseMove, false);
-      document.removeEventListener('mouseup', onMouseUp, false);
+      document.removeEventListener("mousemove", onMouseMove, false);
+      document.removeEventListener("mouseup", onMouseUp, false);
 
-      window.removeEventListener('keydown', onKeyDown, false);
+      window.removeEventListener("keydown", onKeyDown, false);
 
       //scope.dispatchEvent( { type: 'dispose' } ); // should this be added here?
 
@@ -235,9 +235,9 @@ module.exports = function (THREE) {
 
     let scope = this;
 
-    let changeEvent = {type: 'change'};
-    let startEvent = {type: 'start'};
-    let endEvent = {type: 'end'};
+    let changeEvent = {type: "change"};
+    let startEvent = {type: "start"};
+    let endEvent = {type: "end"};
 
     let STATE = {NONE: -1, ROTATE: 0, DOLLY: 1, PAN: 2, TOUCH_ROTATE: 3, TOUCH_DOLLY: 4, TOUCH_PAN: 5};
 
@@ -351,7 +351,7 @@ module.exports = function (THREE) {
         } else {
 
           // camera neither orthographic nor perspective
-          console.warn('WARNING: OrbitControls.js encountered an unknown camera type - pan disabled.');
+          console.warn("WARNING: OrbitControls.js encountered an unknown camera type - pan disabled.");
           scope.enablePan = false;
 
         }
@@ -374,7 +374,7 @@ module.exports = function (THREE) {
 
       } else {
 
-        console.warn('WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.');
+        console.warn("WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.");
         scope.enableZoom = false;
 
       }
@@ -395,7 +395,7 @@ module.exports = function (THREE) {
 
       } else {
 
-        console.warn('WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.');
+        console.warn("WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.");
         scope.enableZoom = false;
 
       }
@@ -696,8 +696,8 @@ module.exports = function (THREE) {
 
       if (state !== STATE.NONE) {
 
-        document.addEventListener('mousemove', onMouseMove, false);
-        document.addEventListener('mouseup', onMouseUp, false);
+        document.addEventListener("mousemove", onMouseMove, false);
+        document.addEventListener("mouseup", onMouseUp, false);
 
         scope.dispatchEvent(startEvent);
 
@@ -749,8 +749,8 @@ module.exports = function (THREE) {
 
       handleMouseUp(event);
 
-      document.removeEventListener('mousemove', onMouseMove, false);
-      document.removeEventListener('mouseup', onMouseUp, false);
+      document.removeEventListener("mousemove", onMouseMove, false);
+      document.removeEventListener("mouseup", onMouseUp, false);
 
       scope.dispatchEvent(endEvent);
 
@@ -897,16 +897,16 @@ module.exports = function (THREE) {
 
     //
 
-    scope.domElement.addEventListener('contextmenu', onContextMenu, false);
+    scope.domElement.addEventListener("contextmenu", onContextMenu, false);
 
-    scope.domElement.addEventListener('mousedown', onMouseDown, false);
-    scope.domElement.addEventListener('wheel', onMouseWheel, false);
+    scope.domElement.addEventListener("mousedown", onMouseDown, false);
+    scope.domElement.addEventListener("wheel", onMouseWheel, false);
 
-    scope.domElement.addEventListener('touchstart', onTouchStart, false);
-    scope.domElement.addEventListener('touchend', onTouchEnd, false);
-    scope.domElement.addEventListener('touchmove', onTouchMove, false);
+    scope.domElement.addEventListener("touchstart", onTouchStart, false);
+    scope.domElement.addEventListener("touchend", onTouchEnd, false);
+    scope.domElement.addEventListener("touchmove", onTouchMove, false);
 
-    window.addEventListener('keydown', onKeyDown, false);
+    window.addEventListener("keydown", onKeyDown, false);
 
     // force an update at start
 
@@ -923,7 +923,7 @@ module.exports = function (THREE) {
 
       get: function () {
 
-        console.warn('THREE.OrbitControls: .center has been renamed to .target');
+        console.warn("THREE.OrbitControls: .center has been renamed to .target");
         return this.target;
 
       }
@@ -936,14 +936,14 @@ module.exports = function (THREE) {
 
       get: function () {
 
-        console.warn('THREE.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.');
+        console.warn("THREE.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.");
         return !this.enableZoom;
 
       },
 
       set: function (value) {
 
-        console.warn('THREE.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.');
+        console.warn("THREE.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.");
         this.enableZoom = !value;
 
       }
@@ -954,14 +954,14 @@ module.exports = function (THREE) {
 
       get: function () {
 
-        console.warn('THREE.OrbitControls: .noRotate has been deprecated. Use .enableRotate instead.');
+        console.warn("THREE.OrbitControls: .noRotate has been deprecated. Use .enableRotate instead.");
         return !this.enableRotate;
 
       },
 
       set: function (value) {
 
-        console.warn('THREE.OrbitControls: .noRotate has been deprecated. Use .enableRotate instead.');
+        console.warn("THREE.OrbitControls: .noRotate has been deprecated. Use .enableRotate instead.");
         this.enableRotate = !value;
 
       }
@@ -972,14 +972,14 @@ module.exports = function (THREE) {
 
       get: function () {
 
-        console.warn('THREE.OrbitControls: .noPan has been deprecated. Use .enablePan instead.');
+        console.warn("THREE.OrbitControls: .noPan has been deprecated. Use .enablePan instead.");
         return !this.enablePan;
 
       },
 
       set: function (value) {
 
-        console.warn('THREE.OrbitControls: .noPan has been deprecated. Use .enablePan instead.');
+        console.warn("THREE.OrbitControls: .noPan has been deprecated. Use .enablePan instead.");
         this.enablePan = !value;
 
       }
@@ -990,14 +990,14 @@ module.exports = function (THREE) {
 
       get: function () {
 
-        console.warn('THREE.OrbitControls: .noKeys has been deprecated. Use .enableKeys instead.');
+        console.warn("THREE.OrbitControls: .noKeys has been deprecated. Use .enableKeys instead.");
         return !this.enableKeys;
 
       },
 
       set: function (value) {
 
-        console.warn('THREE.OrbitControls: .noKeys has been deprecated. Use .enableKeys instead.');
+        console.warn("THREE.OrbitControls: .noKeys has been deprecated. Use .enableKeys instead.");
         this.enableKeys = !value;
 
       }
@@ -1008,14 +1008,14 @@ module.exports = function (THREE) {
 
       get: function () {
 
-        console.warn('THREE.OrbitControls: .staticMoving has been deprecated. Use .enableDamping instead.');
+        console.warn("THREE.OrbitControls: .staticMoving has been deprecated. Use .enableDamping instead.");
         return !this.enableDamping;
 
       },
 
       set: function (value) {
 
-        console.warn('THREE.OrbitControls: .staticMoving has been deprecated. Use .enableDamping instead.');
+        console.warn("THREE.OrbitControls: .staticMoving has been deprecated. Use .enableDamping instead.");
         this.enableDamping = !value;
 
       }
@@ -1026,14 +1026,14 @@ module.exports = function (THREE) {
 
       get: function () {
 
-        console.warn('THREE.OrbitControls: .dynamicDampingFactor has been renamed. Use .dampingFactor instead.');
+        console.warn("THREE.OrbitControls: .dynamicDampingFactor has been renamed. Use .dampingFactor instead.");
         return this.dampingFactor;
 
       },
 
       set: function (value) {
 
-        console.warn('THREE.OrbitControls: .dynamicDampingFactor has been renamed. Use .dampingFactor instead.');
+        console.warn("THREE.OrbitControls: .dynamicDampingFactor has been renamed. Use .dampingFactor instead.");
         this.dampingFactor = value;
 
       }

@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from 'react';
-import * as THREE from 'three';
-import {carsFPath, colors, defaultOpts, opts, wheelsFPath, windowSize} from '../utils';
+import React, {Component, Fragment} from "react";
+import * as THREE from "three";
+import {carsFPath, colors, defaultOpts, opts, wheelsFPath, windowSize} from "../utils";
 
 const three = THREE;
 
@@ -12,21 +12,21 @@ class Main extends Component {
       scene: null,
       camera: null,
       models: {},
-      wheels: ['vossen', 'enkei'],
-      currentColor: 'exColor3',
-      currentWheel: 'vossen'
+      wheels: ["vossen", "enkei"],
+      currentColor: "exColor3",
+      currentWheel: "vossen"
     };
   }
 
   async componentDidMount() {
     await this.init();
-    await document.getElementById('scene').appendChild(this.state.renderer.domElement);
+    await document.getElementById("scene").appendChild(this.state.renderer.domElement);
     this.renderScene();
   }
 
   init = async () => {
     const renderer = new three.WebGLRenderer({antialias: true});
-    renderer.context.getShaderInfoLog = () => '';
+    renderer.context.getShaderInfoLog = () => "";
     renderer.setSize(windowSize.width, windowSize.height);
     renderer.setClearColor(colors.secondColor, 1);
 
@@ -36,9 +36,9 @@ class Main extends Component {
     camera.position.set(1500, 500, 500);
     scene.add(camera);
 
-    const OrbitControls = require('../utils/orbitControls')(THREE);
+    const OrbitControls = require("../utils/orbitControls")(THREE);
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.addEventListener('change', this.renderScene);
+    controls.addEventListener("change", this.renderScene);
     controls.enablePan = false;
     controls.enableZoom = false;
     controls.enableDamping = false;
@@ -57,9 +57,9 @@ class Main extends Component {
     scene.add(light_1, light_2, light_3, light_4, lightAmbient);
 
     await this.setState({renderer: renderer, scene: scene, camera: camera});
-    await this.loadOneTypeModels(carsFPath, 'audi');
-    await this.loadOneTypeModels(wheelsFPath, 'vossen', 'wheels');
-    window.addEventListener('resize', this.onWindowResize, false);
+    await this.loadOneTypeModels(carsFPath, "audi");
+    await this.loadOneTypeModels(wheelsFPath, "vossen", "wheels");
+    window.addEventListener("resize", this.onWindowResize, false);
   };
 
   loadOneTypeModels = async (models, defaultModel, type) => {
@@ -68,7 +68,7 @@ class Main extends Component {
         const object = await this.loadModel(models[model], model);
         if (model === defaultModel) {
           switch (type) {
-            case 'wheels':
+            case "wheels":
               this.addWheelToScene(object);
               break;
             default:
@@ -134,10 +134,10 @@ class Main extends Component {
   getCurrentWheels = () => {
     const {scene} = this.state;
     return {
-      wheel_1: scene.getObjectByName('wheel_1'),
-      wheel_2: scene.getObjectByName('wheel_2'),
-      wheel_3: scene.getObjectByName('wheel_3'),
-      wheel_4: scene.getObjectByName('wheel_4')
+      wheel_1: scene.getObjectByName("wheel_1"),
+      wheel_2: scene.getObjectByName("wheel_2"),
+      wheel_3: scene.getObjectByName("wheel_3"),
+      wheel_4: scene.getObjectByName("wheel_4")
     };
   };
 

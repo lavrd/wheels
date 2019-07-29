@@ -1,9 +1,9 @@
 const colors = {
-  primaryColor: '#051923',
-  secondColor: '#FFFFFF',
-  exColor1: '#E3D0D8',
-  exColor2: '#333745',
-  exColor3: '#88CCF1'
+  primaryColor: "#051923",
+  secondColor: "#FFFFFF",
+  exColor1: "#E3D0D8",
+  exColor2: "#333745",
+  exColor3: "#88CCF1"
 };
 
 const defaultOpts = {
@@ -16,7 +16,7 @@ const defaultOpts = {
   rZ: 0,
 
   color: colors.exColor3,
-  name: 'default'
+  name: "default"
 };
 
 
@@ -28,18 +28,18 @@ const opts = {
 };
 
 opts.wheel_1.pX = -50;
-opts.wheel_1.name = 'wheel_1';
+opts.wheel_1.name = "wheel_1";
 
 opts.wheel_2.pX = -250;
-opts.wheel_2.name = 'wheel_2';
+opts.wheel_2.name = "wheel_2";
 
 opts.wheel_3.pX = -50;
 opts.wheel_3.pZ = 280;
-opts.wheel_3.name = 'wheel_3';
+opts.wheel_3.name = "wheel_3";
 
 opts.wheel_4.pX = -250;
 opts.wheel_4.pZ = 280;
-opts.wheel_4.name = 'wheel_4';
+opts.wheel_4.name = "wheel_4";
 
 const windowSize = {
   width: 700,
